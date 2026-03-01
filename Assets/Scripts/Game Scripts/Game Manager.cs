@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    public void Start()
     {
         GameStatus(GameState.Paused);
     }
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(StartButton))
         {
             GameStatus(GameState.Running);
-            UIManager.Instance.OnStart();
+            UIManager.Instance.StartGame.SetActive(false);
         }
     }
 
@@ -50,9 +50,4 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.GameOverMenu();
     }
 
-    public void WinWin()
-    {
-        GameStatus(GameState.Paused);
-        UIManager.Instance.WinConditionWin();
-    }
 }

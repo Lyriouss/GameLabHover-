@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 935e4c7b0feb4a94b923eac3e2c43776
+guid: 7202127ed60f8f84397d154ab0f7f5d5
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -8,8 +8,8 @@ ScriptedImporter:
   assetBundleName: 
   assetBundleVariant: 
   script: {fileID: 11500000, guid: f53f5fc499d31e44b9deee84d28a9ee8, type: 3}
-  rootGameObjectId: 
-  rootGameObjectName: 
+  rootGameObjectId: bandiera
+  rootGameObjectName: bandiera
   importerVersion: 1
   streamSettings:
     normals: 1
