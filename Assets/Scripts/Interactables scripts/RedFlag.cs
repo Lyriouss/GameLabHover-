@@ -10,6 +10,6 @@ public class RedFlag : MonoBehaviour, IInteractable
 
     public void OnInteraction()
     {
-        
+        ScoreManager.Instance.AddScore(scorePoint);
     }
 }
