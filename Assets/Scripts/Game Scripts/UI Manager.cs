@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] public GameObject pauseMenu;
     [SerializeField] public GameObject gameOverMenu;
     [SerializeField] public GameObject StartGame;
+    [SerializeField] public TMP_Text score;
 
     private void Awake()
     {

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using UnityEditor;
 
 enum GameState
 {
@@ -10,6 +11,7 @@ enum GameState
 public class GameManager : MonoBehaviour
 {
     [SerializeField] KeyCode StartButton = KeyCode.F2;
+    [SerializeField] KeyCode PauseButton = KeyCode.F3;
     private void GameStatus(GameState Status)
     {
          switch(Status)
@@ -35,6 +37,20 @@ public class GameManager : MonoBehaviour
         {
             GameStatus(GameState.Running);
             UIManager.Instance.StartGame.SetActive(false);
+        }
+        if (Input.GetKeyDown(PauseButton))
+        {
+            
+            if (UIManager.Instance.pauseMenu.activeSelf)
+            {
+                GameStatus(GameState.Running);
+                UIManager.Instance.pauseMenu.SetActive(false);
+            }
+            else
+            {
+                GameStatus(GameState.Paused);
+                UIManager.Instance.TogglePauseMenu();
+            }
         }
     }
 
