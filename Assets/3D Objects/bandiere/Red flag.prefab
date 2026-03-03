@@ -60,13 +60,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -2753015028475368726, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
-      propertyPath: m_Mesh
-      value: 
+    - target: {fileID: -4679466807394580993, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
+      propertyPath: currentTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -2224640602982536886, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
       propertyPath: m_Name
-      value: bandiera (1)
+      value: Red flag
       objectReference: {fileID: 0}
     - target: {fileID: -2062533753012235479, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
       propertyPath: m_Mesh
@@ -76,12 +76,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 9157685774796713544, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8961938850675427799, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
+    - {fileID: 1872171622448844900, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 1589366784751986564, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
