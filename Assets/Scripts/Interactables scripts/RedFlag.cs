@@ -7,9 +7,16 @@ public class RedFlag : MonoBehaviour, IInteractable
     public int redFlagPoint = 1;
     public int scorePoint = 500;
 
+    private bool isCollected = false;
+
 
     public void OnInteraction()
     {
+        if (isCollected) return;
+
+        isCollected = true;
+
         ScoreManager.Instance.AddScore(scorePoint);
+
     }
 }

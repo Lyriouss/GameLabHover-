@@ -61,12 +61,12 @@ public class PlayerMovement : MonoBehaviour
     {
         float rotation = rotationSpeed * Time.fixedDeltaTime;
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             playerRB.MoveRotation(playerRB.rotation * Quaternion.Euler(0f, -rotation, 0f));
         }
 
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             playerRB.MoveRotation(playerRB.rotation * Quaternion.Euler(0f, rotation, 0f));
         }

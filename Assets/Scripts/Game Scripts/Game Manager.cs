@@ -52,6 +52,11 @@ public class GameManager : MonoBehaviour
                 UIManager.Instance.TogglePauseMenu();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            UIManager.Instance.PowerUpD_Interaction();
+        }
     }
 
     public void Pause()
