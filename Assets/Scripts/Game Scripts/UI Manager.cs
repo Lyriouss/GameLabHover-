@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
     public int powerUpD_quantity;
     [SerializeField] public Button powerUpA, powerUpS, powerUpD;
     [SerializeField] public TMP_Text powerUpA_TXT, powerUpS_TXT, powerUpD_TXT;
-    [SerializeField] public Image powerUpA_fillBar, powerUpS_fillBar, powerUpD_fillBar, haste_fillBar, slow_fillBar;
+    [SerializeField] public Image powerUpA_fillBar, powerUpS_fillBar, powerUpD_fillBar, shield_fillBar, haste_fillBar, slow_fillBar;
     [SerializeField] public GameObject powerUpD_Screen;
 
     [Header("Score management")]
@@ -42,6 +42,7 @@ public class UIManager : MonoBehaviour
         powerUpS_fillBar.fillAmount = 0;
         powerUpD_fillBar.fillAmount = 0;
         powerUpD_Screen.SetActive(false);
+        shield_fillBar.fillAmount = 0;
         haste_fillBar.fillAmount = 0;
         slow_fillBar.fillAmount = 0;
     }

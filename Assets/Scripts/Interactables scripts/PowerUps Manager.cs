@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PowerUpsManager : MonoBehaviour
@@ -15,15 +14,20 @@ public class PowerUpsManager : MonoBehaviour
     public float invTimerDuration = 5f;
     private bool isInvisible = false;
 
+    //Shield Power Up stats
+    private float shieldTimer = 0f;
+    public float shieldTimerDuration = 5f;
+    private bool isShielded = false;
+
     //Haste Power Up stats
-    private float hasTimer = 0f;
-    public float hasTimerDuration = 5f;
+    private float hasteTimer = 0f;
+    public float hasteTimerDuration = 5f;
     private bool isFast = false;
     private float originalSpeed;
 
     //Slowed Down Power Up stats
-    private float sloTimer = 0f;
-    public float sloTimerDuration = 5f;
+    private float slowTimer = 0f;
+    public float slowTimerDuration = 5f;
     private bool isSlow = false;
 
 
@@ -41,11 +45,11 @@ public class PowerUpsManager : MonoBehaviour
     {
         originalSpeed = PlayerMovement.Instance.maxSpeed;
     }
-    public void Update()
+    public void FixedUpdate()
     {
         if (isInvisible)
         {
-            invTimer += Time.deltaTime;
+            invTimer += Time.fixedDeltaTime;
 
             UIManager.Instance.powerUpD_fillBar.fillAmount = 1f - (invTimer / invTimerDuration);
 
@@ -60,17 +64,23 @@ public class PowerUpsManager : MonoBehaviour
             }
         }
 
+        if (isShielded)
+        {
+            shieldTimer += Time.fixedDeltaTime;
+            UIManager.Instance.shield_fillBar.fillAmount = 1f - (shieldTimer / shieldTimerDuration);
+        }
+
         if (isFast)
         {
-            hasTimer += Time.deltaTime;
+            hasteTimer += Time.fixedDeltaTime;
 
-            UIManager.Instance.haste_fillBar.fillAmount = 1f - (hasTimer / hasTimerDuration);
+            UIManager.Instance.haste_fillBar.fillAmount = 1f - (hasteTimer / hasteTimerDuration);
 
-            if (hasTimer > hasTimerDuration)
+            if (hasteTimer > hasteTimerDuration)
             {
                 PlayerMovement.Instance.maxSpeed = originalSpeed / 2;
 
-                hasTimer = 0f;
+                hasteTimer = 0f;
                 UIManager.Instance.haste_fillBar.fillAmount = 0;
                 isFast = false;
             }
@@ -78,15 +88,15 @@ public class PowerUpsManager : MonoBehaviour
 
         if (isSlow)
         {
-            sloTimer += Time.deltaTime;
+            slowTimer += Time.fixedDeltaTime;
 
-            UIManager.Instance.slow_fillBar.fillAmount = 1f - (sloTimer / sloTimerDuration);
+            UIManager.Instance.slow_fillBar.fillAmount = 1f - (slowTimer / slowTimerDuration);
 
-            if (sloTimer > sloTimerDuration)
+            if (slowTimer > slowTimerDuration)
             {
                 PlayerMovement.Instance.maxSpeed = originalSpeed * 2;
 
-                sloTimer = 0f;
+                slowTimer = 0f;
                 UIManager.Instance.slow_fillBar.fillAmount = 0;
                 isSlow = false;
             }
@@ -97,9 +107,12 @@ public class PowerUpsManager : MonoBehaviour
     {
         if (PlayerMovement.Instance.isGrounded)
         {
-            Rigidbody rb = PlayerMovement.Instance.playerRB;
+            if (PlayerMovement.Instance.moveForward > 0f)
+                PlayerMovement.Instance.playerRB.AddForce(Vector3.up * jumpForce * 10, ForceMode.Impulse);
 
-            rb.linearVelocity = new Vector3(0f, jumpForce, 0f);
+            else
+                PlayerMovement.Instance.playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
             return true;
         }
 
@@ -118,22 +131,39 @@ public class PowerUpsManager : MonoBehaviour
     public void Haste()
     {
         isSlow = false;
-        sloTimer = 0f;
+        slowTimer = 0f;
         UIManager.Instance.slow_fillBar.fillAmount = 0;
 
-        hasTimer = 0f;
+        hasteTimer = 0f;
         PlayerMovement.Instance.maxSpeed = originalSpeed * 2;
         isFast = true;
     }
 
+    public void Shield()
+    {
+        shieldTimer = 0f;
+        isShielded = true;
+
+        if (isSlow)
+        {
+            isSlow = false;
+            slowTimer = 0f;
+            PlayerMovement.Instance.maxSpeed = originalSpeed;
+            UIManager.Instance.slow_fillBar.fillAmount = 0;
+        }
+    }
+
     public void SlowedDown()
     {
-        isFast = false;
-        hasTimer = 0f;
-        UIManager.Instance.haste_fillBar.fillAmount = 0;
+        if (!isShielded)
+        {
+            isFast = false;
+            hasteTimer = 0f;
+            UIManager.Instance.haste_fillBar.fillAmount = 0;
 
-        sloTimer = 0f;
-        PlayerMovement.Instance.maxSpeed = originalSpeed / 2;
-        isSlow = true;
+            slowTimer = 0f;
+            PlayerMovement.Instance.maxSpeed = originalSpeed / 2;
+            isSlow = true;
+        }
     }
 }

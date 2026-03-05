@@ -6,13 +6,13 @@ public class PlayerMovement : MonoBehaviour
     public static PlayerMovement Instance;
 
     public Rigidbody playerRB;
-    private float moveForward;
+    public float moveForward;
 
     [Header("Player Movement Parameters")]
     [SerializeField] public float accelerationForce = 15f; //la forza limite dell'accelerazione 
     [SerializeField] public float maxSpeed = 7f; //velocità massima di movimento del Player
-    [SerializeField] private float rotationSpeed = 50f; //la velocità con cui il player ruota a sx/dx
-    [SerializeField] private float groundDistance = 2f; // distanza fra player e ground
+    [SerializeField] public float rotationSpeed = 50f; //la velocità con cui il player ruota a sx/dx
+    [SerializeField] public float groundDistance = 2f; // distanza fra player e ground
     public bool isGrounded = true; //mi dice se è a terra
 
     public LayerMask groundLayer;
@@ -26,12 +26,9 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         Instance = this;
-    }
-    void Start()
-    {
+   
         playerRB = GetComponent<Rigidbody>();
     }
-
 
     public void FixedUpdate()
     {
@@ -39,8 +36,6 @@ public class PlayerMovement : MonoBehaviour
         Rotate();
         CheckGround();
     }
-
-
 
     //per l'accelerazione avanti/indietro
     void Accelerate()
