@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -11,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player Movement Parameters")]
     [SerializeField] public float accelerationForce = 15f; //la forza limite dell'accelerazione 
     [SerializeField] public float maxSpeed = 7f; //velocità massima di movimento del Player
+    [SerializeField] public float bounceBackForce = 5f; //la forza con cui si viene respinti dopo aver collidato con un muro 
     [SerializeField] public float rotationSpeed = 50f; //la velocità con cui il player ruota a sx/dx
     [SerializeField] public float groundDistance = 2f; // distanza fra player e ground
     public bool isGrounded = true; //mi dice se è a terra
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
         Instance = this;
-   
+
         playerRB = GetComponent<Rigidbody>();
     }
 
@@ -100,6 +100,12 @@ public class PlayerMovement : MonoBehaviour
             //la attivo solo quando cadiamo
             playerRB.useGravity = true;
         }
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Walls"))
+            playerRB.AddForce(-transform.forward *bounceBackForce, ForceMode.Impulse);
     }
 
     //per colorare il raycast in fase di develop
