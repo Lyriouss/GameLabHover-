@@ -18,19 +18,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8933374905260444084, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
       propertyPath: m_LocalScale.z
-      value: 100
+      value: 100.000015
       objectReference: {fileID: 0}
     - target: {fileID: -8933374905260444084, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -11.961817
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8933374905260444084, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.65000004
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8933374905260444084, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 20.123682
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8933374905260444084, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
       propertyPath: m_LocalRotation.w
@@ -72,6 +72,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2051865701985605603, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e3bedfe7ec173b842ba3d852f6c3a1be, type: 2}
+    - target: {fileID: 3202109964942347157, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: e3bedfe7ec173b842ba3d852f6c3a1be, type: 2}
     - target: {fileID: 3401697038448732920, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -81,5 +89,35 @@ PrefabInstance:
     - {fileID: 8961938850675427799, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
     - {fileID: 1872171622448844900, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -2224640602982536886, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5586986733002133787}
   m_SourcePrefab: {fileID: 1589366784751986564, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
+--- !u!1 &2614771122113057733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2224640602982536886, guid: 7202127ed60f8f84397d154ab0f7f5d5, type: 3}
+  m_PrefabInstance: {fileID: 5001798601696819855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5586986733002133787
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2614771122113057733}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 11298c6afea29fb48b009dbe83b3b750, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

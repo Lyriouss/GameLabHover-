@@ -53,7 +53,6 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //per farlo frenare:
-        
         float decelerationTime = 1f; // tempo che ci mette per fermarsi dopo aver smesso di ricevere l'input di accelerazione
         float decelerationRate = playerRB.linearVelocity.magnitude / decelerationTime; //e il suo rate
 

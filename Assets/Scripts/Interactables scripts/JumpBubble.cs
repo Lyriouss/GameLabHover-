@@ -9,6 +9,7 @@ public class JumpBubble : MonoBehaviour, IInteractable
 
         UIManager.Instance.powerUpA_quantity += 1;
         UIManager.Instance.powerUpA_TXT.text = UIManager.Instance.powerUpA_quantity.ToString();
+
         isCollected = true;
     }
 }

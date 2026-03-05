@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Playables;
 
 public class RedFlag : MonoBehaviour, IInteractable
 {
@@ -8,7 +9,6 @@ public class RedFlag : MonoBehaviour, IInteractable
     public int scorePoint = 500;
 
     private bool isCollected = false;
-
 
     public void OnInteraction()
     {

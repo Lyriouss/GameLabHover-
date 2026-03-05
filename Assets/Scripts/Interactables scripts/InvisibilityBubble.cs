@@ -7,9 +7,9 @@ public class InvisibiltyBubble : MonoBehaviour, IInteractable
     {
         if (isCollected) return;
 
-        isCollected = true;
-
         UIManager.Instance.powerUpD_quantity += 1;
         UIManager.Instance.powerUpD_TXT.text = UIManager.Instance.powerUpD_quantity.ToString();
+
+        isCollected = true;
     }
 }

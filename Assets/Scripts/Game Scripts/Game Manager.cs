@@ -53,14 +53,19 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            UIManager.Instance.PowerUpD_Interaction();
-        }
-
         if (Input.GetKeyDown(KeyCode.A))
         {
             UIManager.Instance.PowerUpA_Interaction();
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            UIManager.Instance.PowerUpS_Interaction();
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            UIManager.Instance.PowerUpD_Interaction();
         }
     }
 

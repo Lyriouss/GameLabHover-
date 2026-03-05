@@ -71,6 +71,17 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void PowerUpS_Interaction()
+    {
+        if (powerUpS_quantity > 0)
+        {
+            PowerUpsManager.Instance.tempWall();
+
+            powerUpS_quantity -= 1;
+            powerUpS_TXT.text = powerUpS_quantity.ToString();
+        }
+    }
+
     public void PowerUpD_Interaction()
     {
         if (powerUpD_quantity > 0)
