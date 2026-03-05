@@ -18,13 +18,11 @@ public class UIManager : MonoBehaviour
     public int powerUpD_quantity;
     [SerializeField] public Button powerUpA, powerUpS, powerUpD;
     [SerializeField] public TMP_Text powerUpA_TXT, powerUpS_TXT, powerUpD_TXT;
-    [SerializeField] public Image powerUpA_fillBar, powerUpS_fillBar, powerUpD_fillBar;
+    [SerializeField] public Image powerUpA_fillBar, powerUpS_fillBar, powerUpD_fillBar, haste_fillBar, slow_fillBar;
     [SerializeField] public GameObject powerUpD_Screen;
 
     [Header("Score management")]
     [SerializeField] public TMP_Text score;
-
-    public PowerUpsManager PW;
 
     private void Awake()
     {
@@ -41,9 +39,11 @@ public class UIManager : MonoBehaviour
         StartGame.SetActive(true);
 
         powerUpA_fillBar.fillAmount = 0;
-        powerUpS_fillBar.fillAmount = 0;    
+        powerUpS_fillBar.fillAmount = 0;
         powerUpD_fillBar.fillAmount = 0;
         powerUpD_Screen.SetActive(false);
+        haste_fillBar.fillAmount = 0;
+        slow_fillBar.fillAmount = 0;
     }
 
     public void TogglePauseMenu()
@@ -56,14 +56,29 @@ public class UIManager : MonoBehaviour
         gameOverMenu.SetActive(true);
     }
 
+    public void PowerUpA_Interaction()
+    {
+        if (powerUpA_quantity > 0)
+        {
+            bool jumped = PowerUpsManager.Instance.Jump();
+
+            if (jumped)
+            {
+                powerUpA_quantity -= 1;
+                powerUpA_TXT.text = powerUpA_quantity.ToString();
+            }
+        }
+    }
+
     public void PowerUpD_Interaction()
     {
         if (powerUpD_quantity > 0)
         {
-            PW.Invisibilty();
+            PowerUpsManager.Instance.Invisibilty();
 
             powerUpD_quantity -= 1;
             powerUpD_TXT.text = powerUpD_quantity.ToString();
         }
     }
+
 }
