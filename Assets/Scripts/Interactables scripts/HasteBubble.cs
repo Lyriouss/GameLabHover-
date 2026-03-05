@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class HasteBubble : MonoBehaviour, IInteractable
+public class HasteBubble : Bubbles, IInteractable
 {
     private bool isCollected = false;
-
 
     public void OnInteraction()
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class WallBubble : MonoBehaviour, IInteractable
+public class WallBubble : Bubbles, IInteractable
 {
     private bool isCollected = false;
     public void OnInteraction()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JumpBubble : MonoBehaviour, IInteractable
+public class JumpBubble : Bubbles, IInteractable
 {
     private bool isCollected = false;
     public void OnInteraction()

@@ -1,15 +1,13 @@
 using UnityEngine;
 
-public class SlowBubble : Bubbles, IInteractable
+public class RandomBubble : Bubbles, IInteractable
 {
     private bool isCollected = false;
-
-
     public void OnInteraction()
     {
         if (isCollected) return;
 
-        PowerUpsManager.Instance.SlowedDown();
+        PowerUpsManager.Instance.RandomPowerUp();
         isCollected = true;
     }
 }

@@ -75,7 +75,7 @@ public class UIManager : MonoBehaviour
     {
         if (powerUpS_quantity > 0)
         {
-            PowerUpsManager.Instance.tempWall();
+            PowerUpsManager.Instance.TempWall();
 
             powerUpS_quantity -= 1;
             powerUpS_TXT.text = powerUpS_quantity.ToString();

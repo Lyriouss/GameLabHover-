@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InvisibiltyBubble : MonoBehaviour, IInteractable
+public class InvisibiltyBubble : Bubbles, IInteractable
 {
     private bool isCollected = false;
     public void OnInteraction()

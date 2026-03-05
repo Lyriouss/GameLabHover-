@@ -82,18 +82,6 @@ PrefabInstance:
       value: Red flag
       objectReference: {fileID: 0}
     - target: {fileID: 4715184736184618179, guid: 4694cb3db1df10c46bba30621c9f5c8c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 4715184736184618179, guid: 4694cb3db1df10c46bba30621c9f5c8c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 4715184736184618179, guid: 4694cb3db1df10c46bba30621c9f5c8c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 125
-      objectReference: {fileID: 0}
-    - target: {fileID: 4715184736184618179, guid: 4694cb3db1df10c46bba30621c9f5c8c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}

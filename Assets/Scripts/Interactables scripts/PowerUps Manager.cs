@@ -1,5 +1,15 @@
 using UnityEngine;
 
+enum PowerUps
+{
+    Jump,
+    TempWall,
+    Invisibility,
+    Shield,
+    Haste,
+    SlowedDown
+}
+
 public class PowerUpsManager : MonoBehaviour
 {
     public static PowerUpsManager Instance;
@@ -162,12 +172,12 @@ public class PowerUpsManager : MonoBehaviour
         return false;
     }
 
-    public void tempWall()
+    public void TempWall()
     {
         //settiamo le impostazioni per spawnare il wallPrefab dietro di noi, e ruotato di 90° sull'asse y rispetto al player
         Quaternion wallRot = PlayerMovement.Instance.playerRB.rotation * Quaternion.Euler(0, 90, 0);
         Vector3 wallPos = PlayerMovement.Instance.playerRB.transform.position - PlayerMovement.Instance.playerRB.transform.forward * wallDistance;
-        
+
         //e lo creiamo, settando il timer a 0
         GameObject newTempWall = Instantiate(tempWallPrefab, wallPos, wallRot);
 
@@ -231,6 +241,48 @@ public class PowerUpsManager : MonoBehaviour
             slowTimer = 0f;
             PlayerMovement.Instance.maxSpeed = originalSpeed / 2;
             isSlow = true;
+        }
+    }
+
+    //pe ril metodo Random, abbiamo creato una lista enum dei vari powerup
+    //in PowerUpTypes li abbbiamo assegnati ai metodi
+    //e in RandomPW() abbiamo randomizzaro il Power Up che ti becchi
+    public void RandomPowerUp()
+    {
+        PowerUps randomPW = (PowerUps)Random.Range(0, System.Enum.GetValues(typeof(PowerUps)).Length);
+        PowerUpTypes(randomPW);
+    }
+    
+    void PowerUpTypes(PowerUps PU)
+    {
+        switch (PU)
+        {
+            case PowerUps.Jump:
+                UIManager.Instance.powerUpA_quantity += 1;
+                UIManager.Instance.powerUpA_TXT.text = UIManager.Instance.powerUpA_quantity.ToString();
+                break;
+
+            case PowerUps.TempWall:
+                UIManager.Instance.powerUpS_quantity += 1;
+                UIManager.Instance.powerUpS_TXT.text = UIManager.Instance.powerUpS_quantity.ToString();
+                break;
+
+            case PowerUps.Invisibility:
+                UIManager.Instance.powerUpD_quantity += 1;
+                UIManager.Instance.powerUpD_TXT.text = UIManager.Instance.powerUpD_quantity.ToString();
+                break;
+
+            case PowerUps.Shield:
+                Shield();
+                break;
+
+            case PowerUps.Haste:
+                Haste();
+                break;
+
+            case PowerUps.SlowedDown:
+                SlowedDown();
+                break;
         }
     }
 }
