@@ -37,7 +37,7 @@ public class TargetState : IEnemyState, IEnemyMovement
 
     }
 
-    public void Accelerate()
+    public void MoveVehicle()
     {
 
     }

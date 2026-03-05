@@ -1,13 +1,15 @@
-using System.IO;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public class PatrolState : IEnemyState, IEnemyMovement
 {
     private EnemyManager em;
 
-    private float elapsedTime;
+    private int randomDes;
+    private float distanceCorner;
+    private float waitForAction = 0f;
+    private int cornerDes = 0;
+    private Quaternion targetRotation;
 
     public PatrolState(EnemyManager state)
     {
@@ -16,7 +18,12 @@ public class PatrolState : IEnemyState, IEnemyMovement
 
     public void Enter()
     {
+        waitForAction = 0f;
+        cornerDes = 0;
+        em.navMeshA.isStopped = true;
+        em.isCalibrated = false;
 
+        GetTargetDes();
     }
 
     public void Exit()
@@ -26,17 +33,21 @@ public class PatrolState : IEnemyState, IEnemyMovement
 
     public void Update()
     {
-        elapsedTime += Time.deltaTime;
-
-        if (elapsedTime >= 1f)
-            GeneratePath();
-
-        CheckForTarget();
+        if (waitForAction > 3f)
+            return;
+        waitForAction += Time.deltaTime;
     }
 
     public void FixedUpdate()
     {
+        if (!em.isCalibrated && waitForAction > 3f)
+            CalibrateVehicle();
+        if (em.isCalibrated && waitForAction > 3f)
+            MoveVehicle();
+        CheckForTarget();
         CheckGround();
+        DebugPath();
+        Debug.Log(em.navMeshA.path.corners.Length);
     }
 
     //Only switches states when detecting it's target and can be seen
@@ -56,53 +67,99 @@ public class PatrolState : IEnemyState, IEnemyMovement
         }
     }
 
-    public void GeneratePath()
+    public void GetTargetDes()
     {
-        NavMeshPath path = new NavMeshPath();
-        NavMesh.CalculatePath(em.transform.position, em.target.position, NavMesh.AllAreas, path);
+        randomDes = Random.Range(0, em.patrolPositions.Count);
 
-        em.path = path;
+        em.navMeshA.destination = em.patrolPositions[randomDes].position;
 
-        for (int i = 0; i < em.path.corners.Length; i++)
+        TargetReachedCheck();
+
+        //NavMeshPath path = new NavMeshPath();
+        //NavMesh.CalculatePath(em.transform.position, em.target.position, NavMesh.AllAreas, path);
+
+        //em.path = path;
+
+        //foreach (var corner in em.path.corners)
+        //{
+        //    Debug.Log(corner);
+        //}
+    }
+
+    public void DebugPath()
+    {
+        for (int i = 0; i < em.navMeshA.path.corners.Length; i++)
         {
-            Debug.DrawLine(em.path.corners[i], em.path.corners[i + 1], Color.red);
-            Debug.Log(em.path.corners[i + 1]);
+            if (i < em.navMeshA.path.corners.Length - 1)
+            {
+                Debug.DrawLine(em.navMeshA.path.corners[i], em.navMeshA.path.corners[i + 1], Color.red);
+            }
         }
     }
 
     public void CalibrateVehicle()
     {
-        //float rotation = em.rotationSpeed * Time.fixedDeltaTime;
-        //float direction = 
+        if (cornerDes >= em.navMeshA.path.corners.Length - 1)
+            return;
 
-        //if (Input.GetKey(KeyCode.LeftArrow))
-        //{
-            //em.enemyRB.MoveRotation(em.enemyRB.rotation * Quaternion.Euler(0f, -rotation, 0f));
-        //}
+        targetRotation = Quaternion.LookRotation(em.navMeshA.path.corners[cornerDes + 1] - em.transform.position);
 
-        //else if (Input.GetKey(KeyCode.RightArrow))
-        //{
-            //em.enemyRB.MoveRotation(em.enemyRB.rotation * Quaternion.Euler(0f, rotation, 0f));
-        //}
-    }
+        //Debug.Log(targetRotation);
+        float rotate = em.rotationSpeed * Time.fixedDeltaTime;
+        em.enemyRB.transform.rotation = Quaternion.RotateTowards(em.transform.rotation, targetRotation, rotate);
 
-    public void Accelerate()
-    {
-        em.enemyRB.AddForce(em.transform.forward * em.accelerationForce, ForceMode.Acceleration);
-
-        if (em.enemyRB.linearVelocity.magnitude > em.patrolSpeed)
+        Debug.Log(Quaternion.Angle(em.transform.rotation, targetRotation));
+        if (Quaternion.Angle(em.transform.rotation, targetRotation) < 6f)
         {
-            em.enemyRB.linearVelocity = em.enemyRB.linearVelocity.normalized * em.patrolSpeed;
+            Debug.Log("Calibrated");
+            em.enemyRB.transform.rotation = targetRotation;
+            em.navMeshA.speed = 10f;
+            em.isCalibrated = true;
+            em.navMeshA.isStopped = false;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void MoveVehicle()
     {
-        if (other.CompareTag("TravelPoint"))
-        {
+        if (cornerDes >= em.navMeshA.path.corners.Length - 1)
+            return;
 
+        distanceCorner = Vector3.Distance(em.transform.position, em.navMeshA.path.corners[cornerDes + 1]);
+        Debug.Log(em.navMeshA.path.corners[cornerDes + 1]);
+        
+        if (distanceCorner <= 5f)
+        {
+            em.navMeshA.speed = 3f;
+        }
+        else if (distanceCorner <= 15f)
+        {
+            em.navMeshA.speed = 8f;
+        }
+        
+        //TargetReachedCheck();
+
+        if (distanceCorner <= 2f)
+        {
+            cornerDes++;
+            em.isCalibrated = false;
+            em.navMeshA.isStopped = true;
         }
     }
+
+    public void TargetReachedCheck()
+    {
+        float distanceTarget = Vector3.Distance(em.transform.position, em.patrolPositions[randomDes].position);
+        if (distanceTarget < 2f)
+        {
+            waitForAction = 0f;
+            cornerDes = 1;
+            em.navMeshA.isStopped = true;
+            em.isCalibrated = false;
+
+            GetTargetDes();
+        }
+    }
+    
 
     public void CheckGround()
     {
