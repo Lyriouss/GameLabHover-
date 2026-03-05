@@ -3,23 +3,33 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody playerRB;
+    public static PlayerMovement Instance;
+
+    public Rigidbody playerRB;
     private float moveForward;
 
     [Header("Player Movement Parameters")]
-    [SerializeField] public float accelerationForce = 10f; //la forza limite dell'accelerazione 
-    [SerializeField] public float maxSpeed = 25f; //velocità massima di movimento del Player
-    [SerializeField] private float rotationSpeed = 20f; //la velocità con cui il player ruota a sx/dx
-    [SerializeField] private float groundDistance = 3f; // distanza fra player e ground
+    [SerializeField] public float accelerationForce = 15f; //la forza limite dell'accelerazione 
+    [SerializeField] public float maxSpeed = 7f; //velocità massima di movimento del Player
+    [SerializeField] private float rotationSpeed = 50f; //la velocità con cui il player ruota a sx/dx
+    [SerializeField] private float groundDistance = 2f; // distanza fra player e ground
+    public bool isGrounded = true; //mi dice se è a terra
 
     public LayerMask groundLayer;
     public float rayLenght = 10f;
 
-
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(this);
+            return;
+        }
+        Instance = this;
+    }
     void Start()
     {
         playerRB = GetComponent<Rigidbody>();
-
     }
 
 
@@ -70,8 +80,8 @@ public class PlayerMovement : MonoBehaviour
         {
             playerRB.MoveRotation(playerRB.rotation * Quaternion.Euler(0f, rotation, 0f));
         }
-
     }
+
 
     //per tenere il player sempre a un tot di distanza dal ground, sia questo ground o scale
     void CheckGround()
@@ -80,6 +90,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (Physics.Raycast(playerRB.position, Vector3.down, out hit, groundDistance, groundLayer))
         {
+            isGrounded = true;
+
             //tocca disattivare la gravità sennò rimbalza all'infinito lol
             playerRB.useGravity = false;
 
@@ -90,10 +102,10 @@ public class PlayerMovement : MonoBehaviour
 
         else
         {
+            isGrounded = false;
             //la attivo solo quando cadiamo
             playerRB.useGravity = true;
         }
-
     }
 
     //per colorare il raycast in fase di develop
