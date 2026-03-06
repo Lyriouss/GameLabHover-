@@ -67,6 +67,11 @@ public class GameManager : MonoBehaviour
         {
             UIManager.Instance.PowerUpD_Interaction();
         }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            UIManager.Instance.PowerUpA_Interaction();
+        }
     }
 
     public void Pause()
