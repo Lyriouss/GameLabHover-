@@ -1,13 +1,12 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public interface IEnemyMovement
 {
+    void RotateVehicle();
+    void RegulateMovement();
     void CheckForTarget();
-    void CalibrateVehicle();
-    void MoveVehicle();
     void CheckGround();
 }
 
@@ -17,31 +16,43 @@ public class EnemyManager : MonoBehaviour, IEnemyStateMachine
     public NavMeshAgent navMeshA;
 
     [Header("Movement")]
-    public float accelerationForce = 10f;
-    public float patrolSpeed = 15f;
-    public float targetSpeed = 25f;
-    public float rotationSpeed = 20f;
+    public float decelerationTime = 1f;
+    public float patrolSpeed = 8f;
+    public float targetSpeed = 10f;
+    public float rotationSpeed = 50f;
     public List<Transform> patrolPositions;
 
     [Header("Target Detection")]
     public LayerMask obstacleMask;
     public LayerMask targetMask;
     public float detectionRadius = 20f;
+    public float timeBeforeChange = 3f;
+    [HideInInspector] public Transform target;
 
     [Header("Ground Check")]
     public LayerMask groundLayer;
     public float groundDistance = 2f;
 
-    [HideInInspector] public Transform target;
-    //[HideInInspector] public NavMeshPath path;
-    //[HideInInspector] public int cornerDes = 1;
-    //[HideInInspector] public Transform cornerDes;
-    public bool isCalibrated = false;
+    [Header("Time to stay still after Collision")]
+    public float timeStayStill = 3f;
+
+    [Header("In Script Values")]
+    public Vector3 lastFacing;
+    public bool isMoving;
+    public bool isRotating;
+    public bool needsToStop;
+    public int randomDes;
+    public float stayStillTimer;
 
     private EnemyStateMachine esm;
 
     private void Start()
     {
+        navMeshA.updatePosition = false;
+        navMeshA.updateRotation = false;
+
+        randomDes = Random.Range(0, patrolPositions.Count);
+
         esm = new EnemyStateMachine();
         esm.ChangeState(new PatrolState(this));
     }
@@ -61,20 +72,17 @@ public class EnemyManager : MonoBehaviour, IEnemyStateMachine
         esm.ChangeState(newState);
     }
 
-    IEnumerator WaitForNavigation()
+    private void OnCollisionEnter(Collision other)
     {
-        yield return new WaitForSeconds(3f);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        esm.ChangeState(new PatrolState(this));
+        stayStillTimer = 0f;
+        enemyRB.angularVelocity = Vector3.zero;
+        enemyRB.linearVelocity = Vector3.zero;
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, detectionRadius);
-        Gizmos.DrawRay(transform.position, transform.forward * 20f);
+        Gizmos.DrawRay(transform.position, transform.forward * detectionRadius);
     }
 }

@@ -1,14 +1,11 @@
-using System.Collections;
 using UnityEngine;
 
 public class PatrolState : IEnemyState, IEnemyMovement
 {
     private EnemyManager em;
 
-    private int randomDes;
-    private float distanceCorner;
-    private float waitForAction = 0f;
-    private int cornerDes = 0;
+    private Vector3 offset = new Vector3(1f, 0f, 1f);
+    private float angleCheck;
     private Quaternion targetRotation;
 
     public PatrolState(EnemyManager state)
@@ -18,12 +15,8 @@ public class PatrolState : IEnemyState, IEnemyMovement
 
     public void Enter()
     {
-        waitForAction = 0f;
-        cornerDes = 0;
-        em.navMeshA.isStopped = true;
-        em.isCalibrated = false;
-
-        GetTargetDes();
+        em.enemyRB.angularVelocity = Vector3.zero;
+        em.enemyRB.linearVelocity = Vector3.zero;
     }
 
     public void Exit()
@@ -33,134 +26,81 @@ public class PatrolState : IEnemyState, IEnemyMovement
 
     public void Update()
     {
-        if (waitForAction > 3f)
-            return;
-        waitForAction += Time.deltaTime;
+        CheckForTarget();
+        DesReachedCheck();
+
+        em.navMeshA.destination = em.patrolPositions[em.randomDes].position;
     }
 
     public void FixedUpdate()
     {
-        if (!em.isCalibrated && waitForAction > 3f)
-            CalibrateVehicle();
-        if (em.isCalibrated && waitForAction > 3f)
-            MoveVehicle();
-        CheckForTarget();
+        RotateVehicle();
+        RegulateMovement();
+
         CheckGround();
-        DebugPath();
-        Debug.Log(em.navMeshA.path.corners.Length);
     }
 
-    //Only switches states when detecting it's target and can be seen
-    public void CheckForTarget()
+    public void RotateVehicle()
     {
-        Collider[] check = Physics.OverlapSphere(em.transform.position, em.detectionRadius, em.targetMask);
+        targetRotation = Quaternion.LookRotation(em.navMeshA.velocity);
+        em.enemyRB.transform.rotation = Quaternion.RotateTowards(em.transform.rotation, targetRotation, em.rotationSpeed * Time.fixedDeltaTime);
 
-        if (check.Length == 0)
-            return;
 
-        Vector3 checkDirection = (check[0].transform.position - em.transform.position).normalized;
-        float checkDistance = Vector3.Distance(check[0].transform.position, em.transform.position);
+        Vector3 currentFacing = em.transform.forward;
+        angleCheck = Vector3.Angle(currentFacing, em.lastFacing);
+        //Debug.Log(angleCheck);
 
-        if (!Physics.Raycast(em.transform.position, checkDirection, checkDistance, em.obstacleMask))
+        if (em.enemyRB.linearVelocity.x >= offset.x || em.enemyRB.linearVelocity.z >= offset.z || em.enemyRB.linearVelocity.x <= -offset.x || em.enemyRB.linearVelocity.z <= -offset.z)
+            em.isMoving = true;
+        else
+            em.isMoving = false;
+
+        if (angleCheck > 0.5f && !em.isRotating && !em.needsToStop && em.isMoving)
         {
-            em.ChangeState(new TargetState(em));
+            em.isRotating = true;
+            em.needsToStop = true;
         }
+
+        em.lastFacing = currentFacing;
     }
 
-    public void GetTargetDes()
+    public void RegulateMovement()
     {
-        randomDes = Random.Range(0, em.patrolPositions.Count);
-
-        em.navMeshA.destination = em.patrolPositions[randomDes].position;
-
-        TargetReachedCheck();
-
-        //NavMeshPath path = new NavMeshPath();
-        //NavMesh.CalculatePath(em.transform.position, em.target.position, NavMesh.AllAreas, path);
-
-        //em.path = path;
-
-        //foreach (var corner in em.path.corners)
-        //{
-        //    Debug.Log(corner);
-        //}
-    }
-
-    public void DebugPath()
-    {
-        for (int i = 0; i < em.navMeshA.path.corners.Length; i++)
+        //after detecting a rotation after moving straight, stops the movement of enemy
+        if (em.isRotating && em.needsToStop)
         {
-            if (i < em.navMeshA.path.corners.Length - 1)
+            em.navMeshA.speed = 0f;
+
+            float decelerationRate = em.enemyRB.linearVelocity.magnitude / em.decelerationTime;
+            em.enemyRB.linearVelocity = Vector3.MoveTowards(em.enemyRB.linearVelocity, Vector3.zero, decelerationRate * Time.fixedDeltaTime);
+
+            //only when completely stopped, heads to the next phase of movement
+            if (em.enemyRB.linearVelocity == Vector3.zero)
             {
-                Debug.DrawLine(em.navMeshA.path.corners[i], em.navMeshA.path.corners[i + 1], Color.red);
+                em.needsToStop = false;
             }
         }
+        //after it stops moving, start rotating the enemy
+        else if (em.isRotating && !em.needsToStop)
+        {
+            em.navMeshA.speed = 0.01f;
+
+            //only when the difference between current rotation angle and last rotation angle is less than 0.5
+            if (angleCheck <= 0.5f)
+                em.isRotating = false;
+        }
+        //after rotation is complete, move the enemy
+        else if (!em.isRotating && !em.needsToStop)
+        {
+            em.navMeshA.speed = em.patrolSpeed;
+        }
+
+        //moves the enemy rigid body in the direction of nav mesh agent path
+        em.enemyRB.linearVelocity = em.navMeshA.velocity;
+        em.navMeshA.nextPosition = em.enemyRB.position;
     }
 
-    public void CalibrateVehicle()
-    {
-        if (cornerDes >= em.navMeshA.path.corners.Length - 1)
-            return;
-
-        targetRotation = Quaternion.LookRotation(em.navMeshA.path.corners[cornerDes + 1] - em.transform.position);
-
-        //Debug.Log(targetRotation);
-        float rotate = em.rotationSpeed * Time.fixedDeltaTime;
-        em.enemyRB.transform.rotation = Quaternion.RotateTowards(em.transform.rotation, targetRotation, rotate);
-
-        Debug.Log(Quaternion.Angle(em.transform.rotation, targetRotation));
-        if (Quaternion.Angle(em.transform.rotation, targetRotation) < 6f)
-        {
-            Debug.Log("Calibrated");
-            em.enemyRB.transform.rotation = targetRotation;
-            em.navMeshA.speed = 10f;
-            em.isCalibrated = true;
-            em.navMeshA.isStopped = false;
-        }
-    }
-
-    public void MoveVehicle()
-    {
-        if (cornerDes >= em.navMeshA.path.corners.Length - 1)
-            return;
-
-        distanceCorner = Vector3.Distance(em.transform.position, em.navMeshA.path.corners[cornerDes + 1]);
-        Debug.Log(em.navMeshA.path.corners[cornerDes + 1]);
-        
-        if (distanceCorner <= 5f)
-        {
-            em.navMeshA.speed = 3f;
-        }
-        else if (distanceCorner <= 15f)
-        {
-            em.navMeshA.speed = 8f;
-        }
-        
-        //TargetReachedCheck();
-
-        if (distanceCorner <= 2f)
-        {
-            cornerDes++;
-            em.isCalibrated = false;
-            em.navMeshA.isStopped = true;
-        }
-    }
-
-    public void TargetReachedCheck()
-    {
-        float distanceTarget = Vector3.Distance(em.transform.position, em.patrolPositions[randomDes].position);
-        if (distanceTarget < 2f)
-        {
-            waitForAction = 0f;
-            cornerDes = 1;
-            em.navMeshA.isStopped = true;
-            em.isCalibrated = false;
-
-            GetTargetDes();
-        }
-    }
-    
-
+    //always keeps the enemy height from ground to a fixed value (falls with gravity force)
     public void CheckGround()
     {
         RaycastHit hit;
@@ -177,6 +117,41 @@ public class PatrolState : IEnemyState, IEnemyMovement
         else
         {
             em.enemyRB.useGravity = true;
+        }
+    }
+
+    public void CheckForTarget()
+    {
+        //when detecting a target of enemy
+        Collider[] check = Physics.OverlapSphere(em.transform.position, em.detectionRadius, em.targetMask);
+
+        if (check.Length == 0)
+            return;
+
+        foreach (Collider target in check)
+        {
+            //gets direction and distance from target
+            Vector3 rayDirection = (target.transform.position - em.transform.position).normalized;
+            float rayDistance = Vector3.Distance(target.transform.position, em.transform.position);
+
+            //and casts a RayCast to see if there are any obstacles in the way (is in line of sight)
+            if (!Physics.Raycast(em.transform.position, rayDirection, rayDistance, em.obstacleMask))
+            {
+                //if no obstacles were detected, changes enemy state and assigns target
+                em.target = target.transform;
+                em.ChangeState(new TargetState(em));
+            }
+        }
+    }
+
+    //when reaching path destination, gets another destination to travel to
+    public void DesReachedCheck()
+    {
+        float CheckDistance = Vector3.Distance(em.patrolPositions[em.randomDes].position, em.transform.position);
+
+        if (CheckDistance < 3f)
+        {
+            em.randomDes = Random.Range(0, em.patrolPositions.Count);
         }
     }
 }
