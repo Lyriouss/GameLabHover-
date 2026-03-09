@@ -50,7 +50,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7426396777646750000, guid: 84f1d118738e6ec4c9b2816c4ec885b0, type: 3}
       propertyPath: targetMask.m_Bits
-      value: 256
+      value: 2048
       objectReference: {fileID: 0}
     - target: {fileID: 8660256515494692988, guid: 84f1d118738e6ec4c9b2816c4ec885b0, type: 3}
       propertyPath: m_Name

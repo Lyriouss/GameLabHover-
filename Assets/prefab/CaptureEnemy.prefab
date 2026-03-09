@@ -60,7 +60,7 @@ MonoBehaviour:
     m_Bits: 192
   targetMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 1024
   detectionRadius: 50
   timeBeforeChange: 3
   target: {fileID: 0}
