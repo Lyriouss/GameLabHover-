@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4093166081695338515}
   - component: {fileID: 664943113847973015}
   - component: {fileID: 7358065277086068218}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pSphere2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   - component: {fileID: 7378028088193421951}
   - component: {fileID: 4558517992040243089}
   - component: {fileID: 8593135792725658500}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: semaforo_verde
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 7686314182176723199}
   - component: {fileID: -5092992061214102289}
   - component: {fileID: -302331657341952703}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Haste Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -259,7 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1130599480743810700}
   - component: {fileID: 2196924920209855517}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PowerUpIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
