@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 3745828284576132449}
   m_Layer: 10
   m_Name: RedFlag
-  m_TagString: Untagged
+  m_TagString: Flag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

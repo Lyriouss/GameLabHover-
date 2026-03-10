@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class RedFlag : MonoBehaviour, IInteractable
+public class BlueFlag : MonoBehaviour, IInteractable
 {
     //la classe red flag dovrà aggiungere un punto UI al giocatore rosso e 500 allo score, quando interagita
 

@@ -7,7 +7,6 @@ public class TargetState : IEnemyState, IEnemyMovement
     //private Quaternion targetRotation;
     Vector3 rayDirection;
     float rayDistance;
-    private float targetTimer;
 
     public TargetState(EnemyManager state)
     {
@@ -16,7 +15,8 @@ public class TargetState : IEnemyState, IEnemyMovement
 
     public void Enter()
     {
-        em.stayStillTimer = em.timeStayStill;
+        if (em.target.CompareTag("Player"))
+            em.targetPing.Play();
     }
 
     public void Exit()
@@ -28,17 +28,13 @@ public class TargetState : IEnemyState, IEnemyMovement
     {
         CheckForTarget();
 
-        if (em.stayStillTimer < em.timeStayStill)
-            em.stayStillTimer += Time.deltaTime;
+        em.navMeshA.destination = em.target.position;
     }
 
     public void FixedUpdate()
     {
-        if (em.stayStillTimer >= em.timeStayStill)
-        {
-            RotateVehicle();
-            RegulateMovement();
-        }
+        RotateVehicle();
+        RegulateMovement();
 
         CheckGround();
     }
@@ -105,18 +101,6 @@ public class TargetState : IEnemyState, IEnemyMovement
 
         //checks if the enemy can the see the target
         if (!Physics.Raycast(em.transform.position, rayDirection, rayDistance, em.targetMask))
-        {
-            targetTimer += Time.deltaTime;
-        }
-        else
-        {
-            targetTimer = 0f;
-
-            em.navMeshA.destination = em.target.position;
-        }
-
-        //after the enemy cannot see the target after some time, enemy state changes
-        if (targetTimer >= em.timeBeforeChange)
         {
             em.ChangeState(new PatrolState(em));
         }

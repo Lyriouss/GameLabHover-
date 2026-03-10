@@ -50,6 +50,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyManager
   enemyRB: {fileID: 5437165918216992063}
   navMeshA: {fileID: 8224837305639548073}
+  targetPing: {fileID: 0}
+  collision: {fileID: 0}
+  flagCapture: {fileID: 0}
   decelerationTime: 1
   patrolSpeed: 8
   targetSpeed: 10
@@ -119,7 +122,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80

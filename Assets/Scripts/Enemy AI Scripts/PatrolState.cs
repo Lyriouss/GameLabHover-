@@ -15,6 +15,7 @@ public class PatrolState : IEnemyState, IEnemyMovement
 
     public void Enter()
     {
+        em.stayStillTimer = 0f;
         em.enemyRB.angularVelocity = Vector3.zero;
         em.enemyRB.linearVelocity = Vector3.zero;
     }
@@ -26,16 +27,26 @@ public class PatrolState : IEnemyState, IEnemyMovement
 
     public void Update()
     {
-        CheckForTarget();
+        if (em.stayStillTimer < em.timeStayStill)
+            em.stayStillTimer += Time.deltaTime;
+
         DesReachedCheck();
 
         em.navMeshA.destination = em.patrolPositions[em.randomDes].position;
+
+        if (em.stayStillTimer >= em.timeStayStill)
+        {
+            CheckForTarget();
+        }
     }
 
     public void FixedUpdate()
     {
-        RotateVehicle();
-        RegulateMovement();
+        if (em.stayStillTimer >= em.timeStayStill)
+        {
+            RotateVehicle();
+            RegulateMovement();
+        }
 
         CheckGround();
     }
@@ -44,7 +55,6 @@ public class PatrolState : IEnemyState, IEnemyMovement
     {
         targetRotation = Quaternion.LookRotation(em.navMeshA.velocity);
         em.enemyRB.transform.rotation = Quaternion.RotateTowards(em.transform.rotation, targetRotation, em.rotationSpeed * Time.fixedDeltaTime);
-
 
         Vector3 currentFacing = em.transform.forward;
         angleCheck = Vector3.Angle(currentFacing, em.lastFacing);

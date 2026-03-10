@@ -14,6 +14,7 @@ public class EnemyManager : MonoBehaviour, IEnemyStateMachine
 {
     public Rigidbody enemyRB;
     public NavMeshAgent navMeshA;
+    public AudioSource targetPing, collision, flagCapture;
 
     [Header("Movement")]
     public float decelerationTime = 1f;
@@ -74,9 +75,12 @@ public class EnemyManager : MonoBehaviour, IEnemyStateMachine
 
     private void OnCollisionEnter(Collision other)
     {
-        stayStillTimer = 0f;
-        enemyRB.angularVelocity = Vector3.zero;
-        enemyRB.linearVelocity = Vector3.zero;
+        esm.ChangeState(new PatrolState(this));
+
+        if (other.collider.CompareTag("Player"))
+        {
+            collision.Play();
+        }
     }
 
     private void OnDrawGizmos()
