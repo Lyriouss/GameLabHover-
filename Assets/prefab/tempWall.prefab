@@ -8,12 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<<< HEAD:Assets/prefab/tempWall.prefab
   - component: {fileID: 4359510695173876783}
   - component: {fileID: 3299523324164852618}
   - component: {fileID: 7851288635821638479}
   - component: {fileID: 7536658287347841611}
   m_Layer: 7
   m_Name: tempWall
+========
+  - component: {fileID: 801261189175792478}
+  - component: {fileID: 2997276708040289279}
+  - component: {fileID: 6493576509083992784}
+  - component: {fileID: 5984677655887480275}
+  - component: {fileID: 1893244467889222922}
+  m_Layer: 0
+  m_Name: Invisibility Sphere
+>>>>>>>> Feature:Assets/prefab/Invisibility Sphere.prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +77,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+<<<<<<<< HEAD:Assets/prefab/tempWall.prefab
   - {fileID: 2100000, guid: 5c259c442e6d125468ea162d399905be, type: 2}
+========
+  - {fileID: 2100000, guid: 8693ec2dc11530a49a1034ad4b205c99, type: 2}
+>>>>>>>> Feature:Assets/prefab/Invisibility Sphere.prefab
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

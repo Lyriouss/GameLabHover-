@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class HasteBubble : Bubbles, IInteractable
 {
     private bool isCollected = false;

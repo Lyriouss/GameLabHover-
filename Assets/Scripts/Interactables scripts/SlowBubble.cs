@@ -1,9 +1,6 @@
-using UnityEngine;
-
 public class SlowBubble : Bubbles, IInteractable
 {
     private bool isCollected = false;
-
 
     public void OnInteraction()
     {

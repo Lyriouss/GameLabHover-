@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public class ShieldBubble : Bubbles, IInteractable
 {
     private bool isCollected = false;
