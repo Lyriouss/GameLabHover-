@@ -310,7 +310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2614771122113057733, guid: 4694cb3db1df10c46bba30621c9f5c8c, type: 3}
       propertyPath: m_Name
-      value: Red flag
+      value: Blue flag
       objectReference: {fileID: 0}
     - target: {fileID: 2614771122113057733, guid: 4694cb3db1df10c46bba30621c9f5c8c, type: 3}
       propertyPath: m_Layer
