@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 enum PowerUps
@@ -47,6 +48,34 @@ public class PowerUpsManager : MonoBehaviour
     public float slowTimerDuration = 10f;
     private bool isSlow = false;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource jumpCollect;
+    [SerializeField] private AudioSource wallCollect;
+    [SerializeField] private AudioSource cloakCollect;
+    [SerializeField] private AudioSource jumpActivate;
+    [SerializeField] private AudioSource wallActivate;
+    [SerializeField] private AudioSource cloakActivate;
+    [SerializeField] private AudioSource shieldActivate;
+    [SerializeField] private AudioSource hasteActivate;
+    [SerializeField] private AudioSource slowActivate;
+    [SerializeField] private AudioSource cloakEnd;
+    [SerializeField] private AudioSource shieldEnd;
+    [SerializeField] private AudioSource hasteEnd;
+    [SerializeField] private AudioSource slowEnd;
+
+    private void OnEnable()
+    {
+        JumpBubble.collectPowerup += CollectPowerup;
+        WallBubble.collectPowerup += CollectPowerup;
+        InvisibiltyBubble.collectPowerup += CollectPowerup;
+    }
+
+    private void OnDisable()
+    {
+        JumpBubble.collectPowerup -= CollectPowerup;
+        WallBubble.collectPowerup -= CollectPowerup;
+        InvisibiltyBubble.collectPowerup -= CollectPowerup;
+    }
 
     private void Awake()
     {
@@ -74,8 +103,11 @@ public class PowerUpsManager : MonoBehaviour
 
             if (invTimer > invTimerDuration)
             {
+                cloakEnd.Play();
+
                 //quando arriva allo scadere del timer, torna visibile e si disattiva lo screen blu della UI
-                player.GetComponent<Renderer>().enabled = true;
+                int layerChange = LayerMask.NameToLayer("Player");
+                player.layer = layerChange;
 
                 invTimer = 0f;
                 UIManager.Instance.powerUpD_Screen.SetActive(false);
@@ -108,6 +140,8 @@ public class PowerUpsManager : MonoBehaviour
 
             if (shieldTimer > shieldTimerDuration)
             {
+                shieldEnd.Play();
+
                 //quando arriva allo scadere del timer, si resetta tutto
                 shieldTimer = 0f;
                 UIManager.Instance.shield_fillBar.fillAmount = 0;
@@ -124,6 +158,8 @@ public class PowerUpsManager : MonoBehaviour
 
             if (hasteTimer > hasteTimerDuration)
             {
+                hasteEnd.Play();
+
                 //quando arriva allo scadere del timer, torna alla velocità originale e si resetta tutto
                 PlayerMovement.Instance.maxSpeed = originalSpeed;
 
@@ -142,6 +178,8 @@ public class PowerUpsManager : MonoBehaviour
 
             if (slowTimer > slowTimerDuration)
             {
+                slowEnd.Play();
+
                 //quando arriva allo scadere del timer, torna alla velocità originale e si resetta tutto
 
                 PlayerMovement.Instance.maxSpeed = originalSpeed;
@@ -159,12 +197,17 @@ public class PowerUpsManager : MonoBehaviour
         //si attiva il salto solo se il player risulta a terra dallo script di movimento
         if (PlayerMovement.Instance.isGrounded)
         {
+            jumpActivate.Play();
+
             //se il player sta "accelerando" in avanti, la jumpforce è molto più alta per farlo saltare ad ugual altezza di quando invece è fermo
             if (PlayerMovement.Instance.moveForward > 0f)
+            {
                 PlayerMovement.Instance.playerRB.AddForce(Vector3.up * jumpForce * 10, ForceMode.Impulse);
-
+            }
             else
+            {
                 PlayerMovement.Instance.playerRB.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            }
 
             return true;
         }
@@ -174,6 +217,8 @@ public class PowerUpsManager : MonoBehaviour
 
     public void TempWall()
     {
+        wallActivate.Play();
+
         //settiamo le impostazioni per spawnare il wallPrefab dietro di noi, e ruotato di 90° sull'asse y rispetto al player
         Quaternion wallRot = PlayerMovement.Instance.playerRB.rotation * Quaternion.Euler(0, 90, 0);
         Vector3 wallPos = PlayerMovement.Instance.playerRB.transform.position - PlayerMovement.Instance.playerRB.transform.forward * wallDistance;
@@ -190,8 +235,11 @@ public class PowerUpsManager : MonoBehaviour
 
     public void Invisibilty()
     {
+        cloakActivate.Play();
+
         //il player diventa "invisibile" perdendo temporaneamente la mesh (DA CONTROLLARE APPENA LUCA HA I NEMICI)
-        player.GetComponent<Renderer>().enabled = false;
+        int layerChange = LayerMask.NameToLayer("Default");
+        player.layer = layerChange;
 
         //setto il timer a 0 e attivo il blue screen dell'invisibilità
         invTimer = 0f;
@@ -200,6 +248,8 @@ public class PowerUpsManager : MonoBehaviour
     }
     public void Shield()
     {
+        shieldActivate.Play();
+
         //setto il timer
         shieldTimer = 0f;
         isShielded = true;
@@ -216,6 +266,8 @@ public class PowerUpsManager : MonoBehaviour
 
     public void Haste()
     {
+        hasteActivate.Play();
+
         //se avevo preso un power up della lentezza, beh non più
         isSlow = false;
         slowTimer = 0f;
@@ -232,6 +284,8 @@ public class PowerUpsManager : MonoBehaviour
     {
         if (!isShielded)
         {
+            slowActivate.Play();
+
             //se avevo preso un power up della velocità, beh non più
             isFast = false;
             hasteTimer = 0f;
@@ -252,22 +306,31 @@ public class PowerUpsManager : MonoBehaviour
         PowerUps randomPW = (PowerUps)Random.Range(0, System.Enum.GetValues(typeof(PowerUps)).Length);
         PowerUpTypes(randomPW);
     }
+
+    public void CollectPowerup(int index)
+    {
+        PowerUps collectPU = (PowerUps)index;
+        PowerUpTypes(collectPU);
+    }
     
     void PowerUpTypes(PowerUps PU)
     {
         switch (PU)
         {
             case PowerUps.Jump:
+                jumpCollect.Play();
                 UIManager.Instance.powerUpA_quantity += 1;
                 UIManager.Instance.powerUpA_TXT.text = UIManager.Instance.powerUpA_quantity.ToString();
                 break;
 
             case PowerUps.TempWall:
+                wallCollect.Play();
                 UIManager.Instance.powerUpS_quantity += 1;
                 UIManager.Instance.powerUpS_TXT.text = UIManager.Instance.powerUpS_quantity.ToString();
                 break;
 
             case PowerUps.Invisibility:
+                cloakCollect.Play();
                 UIManager.Instance.powerUpD_quantity += 1;
                 UIManager.Instance.powerUpD_TXT.text = UIManager.Instance.powerUpD_quantity.ToString();
                 break;

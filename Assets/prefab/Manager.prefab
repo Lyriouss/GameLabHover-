@@ -35,6 +35,7 @@ Transform:
   - {fileID: 8918646311797164640}
   - {fileID: 4904815660062110573}
   - {fileID: 4812816745304937460}
+  - {fileID: 3864529301982762972}
   m_Father: {fileID: 828486120641533508}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &900237730565275231
@@ -387,7 +388,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3864529301982762972}
   - {fileID: 8449315035542012366}
   - {fileID: 5773332668920500352}
   - {fileID: 5374499868416128038}
@@ -3537,12 +3537,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6090953102827495021}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7635611110384569416}
+  m_Father: {fileID: 1050353112948123735}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2585475369828871617
 AudioSource:
@@ -4241,6 +4241,19 @@ MonoBehaviour:
   shieldTimerDuration: 20
   hasteTimerDuration: 15
   slowTimerDuration: 15
+  jumpCollect: {fileID: 0}
+  wallCollect: {fileID: 0}
+  cloakCollect: {fileID: 0}
+  jumpActivate: {fileID: 0}
+  wallActivate: {fileID: 0}
+  cloakActivate: {fileID: 0}
+  shieldActivate: {fileID: 0}
+  hasteActivate: {fileID: 0}
+  slowActivate: {fileID: 0}
+  cloakEnd: {fileID: 0}
+  shieldEnd: {fileID: 0}
+  hasteEnd: {fileID: 0}
+  slowEnd: {fileID: 0}
 --- !u!1 &6963438116966507051
 GameObject:
   m_ObjectHideFlags: 0

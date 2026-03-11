@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -17,6 +18,10 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask groundLayer;
     public float rayLenght = 10f;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource jumpEnd;
+    [SerializeField] private AudioSource collisionWall;
 
     private void Awake()
     {
@@ -82,9 +87,13 @@ public class PlayerMovement : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(playerRB.position, Vector3.down, out hit, groundDistance, groundLayer))
+        if (Physics.Raycast(playerRB.position, Vector3.down, out hit, groundDistance + 0.25f, groundLayer))
         {
-            isGrounded = true;
+            if (!isGrounded)
+            {
+                isGrounded = true;
+                jumpEnd.Play();
+            }
 
             //tocca disattivare la gravità sennò rimbalza all'infinito lol
             playerRB.useGravity = false;
@@ -105,7 +114,10 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Walls"))
+        {
+            collisionWall.Play();
             playerRB.AddForce(-transform.forward *bounceBackForce, ForceMode.Impulse);
+        }
     }
 
     //per colorare il raycast in fase di develop
