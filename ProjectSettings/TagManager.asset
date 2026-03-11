@@ -16,10 +16,10 @@ TagManager:
   - Walls
   - FOV
   - MiniMap
-  - Flag
+  - RedFlag
   - Player
   - Powerup
-  - 
+  - BlueFlag
   - 
   - 
   - 

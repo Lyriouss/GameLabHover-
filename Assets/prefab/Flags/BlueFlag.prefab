@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9118354957131021278}
   - component: {fileID: 912631514397392644}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: flagCollected
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 3009822040053663080}
   - component: {fileID: 3745828284576132449}
   - component: {fileID: 8955358455877289165}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: BlueFlag
   m_TagString: Flag
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3541600365853766012}
   - component: {fileID: 4624453916203479548}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: Minimap BlueFlag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,11 +302,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1055567719714367337, guid: 4694cb3db1df10c46bba30621c9f5c8c, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1726906399600351492, guid: 4694cb3db1df10c46bba30621c9f5c8c, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 2614771122113057733, guid: 4694cb3db1df10c46bba30621c9f5c8c, type: 3}
       propertyPath: m_Name
@@ -314,11 +314,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2614771122113057733, guid: 4694cb3db1df10c46bba30621c9f5c8c, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 3373537240805398987, guid: 4694cb3db1df10c46bba30621c9f5c8c, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 4715184736184618179, guid: 4694cb3db1df10c46bba30621c9f5c8c, type: 3}
       propertyPath: m_LocalScale.x
@@ -378,7 +378,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: ea759f8c10980b044947ff0e44a2acf3, type: 2}
     - target: {fileID: 7733994500405557257, guid: 4694cb3db1df10c46bba30621c9f5c8c, type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
