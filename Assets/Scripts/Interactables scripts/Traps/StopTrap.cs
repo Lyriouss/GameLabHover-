@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Stoptrap : MonoBehaviour
+public class StopTrap : MonoBehaviour
 {
     //Stop trap stats
     private Rigidbody trappedHovercraft; //gli hovercraft da intrappolare
@@ -11,7 +11,7 @@ public class Stoptrap : MonoBehaviour
 
     private void Awake()
     {
-        //ci gettiamo il collider della trappola
+        //ci gettiamo il collider della trappola 
         trapCollider = GetComponent<Collider>();
     }
 
@@ -47,8 +47,8 @@ public class Stoptrap : MonoBehaviour
         if (isStopped) return;
 
         //ci gettiamo il rigidbody della navicella che ha beccato la trappola
-        Rigidbody HoversRB = other.GetComponent<Rigidbody>();
-        trappedHovercraft = HoversRB;
+        Rigidbody hoversRB = other.GetComponent<Rigidbody>();
+        trappedHovercraft = hoversRB;
 
         //centriamo il player mantenendo la sua altezza
         Vector3 trapCenter = new Vector3(transform.position.x, trappedHovercraft.position.y, transform.position.z);
