@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class RedFlag : MonoBehaviour
+public class RedFlag : MonoBehaviour, IInteractable
 {
     public static event Action collectRedFlag;
 

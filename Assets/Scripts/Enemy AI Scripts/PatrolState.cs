@@ -16,8 +16,6 @@ public class PatrolState : IEnemyState, IEnemyMovement
     public void Enter()
     {
         em.stayStillTimer = 0f;
-        em.enemyRB.angularVelocity = Vector3.zero;
-        em.enemyRB.linearVelocity = Vector3.zero;
     }
 
     public void Exit()

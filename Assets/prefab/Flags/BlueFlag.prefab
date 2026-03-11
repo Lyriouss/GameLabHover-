@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 8955358455877289165}
   m_Layer: 13
   m_Name: BlueFlag
-  m_TagString: Flag
+  m_TagString: BlueFlag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -157,7 +157,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 863070444680367755}
@@ -198,8 +198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167c65fe64c3c0a47b2bc5cd3d320e0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlueFlag
-  flagCollected: {fileID: 912631514397392644}
-  redFlagPoint: 1
   scorePoint: 500
 --- !u!1 &9083825564830159815
 GameObject:

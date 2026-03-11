@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1617930706974448987}
   - component: {fileID: 7426396777646750000}
+  - component: {fileID: 5728693187284332303}
   - component: {fileID: 8224837305639548073}
   - component: {fileID: 5437165918216992063}
   - component: {fileID: 3870025485835652687}
   m_Layer: 0
   m_Name: CaptureEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -66,18 +67,30 @@ MonoBehaviour:
     m_Bits: 1024
   detectionRadius: 50
   timeBeforeChange: 3
-  target: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   groundDistance: 2
   timeStayStill: 3
+  target: {fileID: 0}
   lastFacing: {x: 0, y: 0, z: 0}
   isMoving: 0
   isRotating: 0
   needsToStop: 0
   randomDes: 0
   stayStillTimer: 0
+--- !u!114 &5728693187284332303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8660256515494692988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56936aa4a28ff7b4bb9fb43b42a3b0e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyInteractable
 --- !u!195 &8224837305639548073
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -87,7 +100,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8660256515494692988}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 1.5
+  m_Radius: 3
   m_Speed: 10
   m_Acceleration: 5
   avoidancePriority: 50

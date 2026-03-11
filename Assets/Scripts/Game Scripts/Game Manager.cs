@@ -12,6 +12,25 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] KeyCode StartButton = KeyCode.F2;
     [SerializeField] KeyCode PauseButton = KeyCode.F3;
+
+    [SerializeField] AudioSource blueFlagCollected;
+    [SerializeField] AudioSource redFlagCollected;
+
+    private int capturedBlueFlags;
+    private int capturedRedFlags;
+
+    private void OnEnable()
+    {
+        BlueFlag.collectBlueFlag += UpdateBlueFlags;
+        RedFlag.collectRedFlag += UpdateRedFlags;
+    }
+
+    private void OnDisable()
+    {
+        BlueFlag.collectBlueFlag -= UpdateBlueFlags;
+        RedFlag.collectRedFlag -= UpdateRedFlags;
+    }
+
     private void GameStatus(GameState Status)
     {
          switch(Status)
@@ -69,10 +88,36 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpdateBlueFlags()
+    {
+        blueFlagCollected.Play();
+        capturedBlueFlags++;
+
+        if (capturedBlueFlags >= 3)
+        {
+            LevelWin();
+        }
+    }
+
+    public void UpdateRedFlags()
+    {
+        redFlagCollected.Play();
+        capturedRedFlags++;
+
+        if (capturedRedFlags >= 3)
+        {
+            GameOver();
+        }
+    }
+
     public void Pause()
     {
         GameStatus(GameState.Paused);
         UIManager.Instance.TogglePauseMenu();
+
+    }
+    public void LevelWin()
+    {
 
     }
     public void GameOver()
