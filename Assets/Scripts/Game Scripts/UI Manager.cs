@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     [Header("Menus")]
     [SerializeField] public GameObject pauseMenu;
     [SerializeField] public GameObject gameOverMenu;
-    [SerializeField] public GameObject StartGame;
+    [SerializeField] public GameObject startGame;
 
     [Header("Power Up management")]
     public int powerUpA_quantity;
@@ -24,8 +24,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Score management")]
     [SerializeField] public TMP_Text score;
-    [SerializeField] public Image FlagScoreBlu;
-    [SerializeField] public Image FlagScoreRed;
+    [SerializeField] public Image flagScoreBlu;
+    [SerializeField] public Image flagScoreRed;
 
     private void Awake()
     {
@@ -39,8 +39,14 @@ public class UIManager : MonoBehaviour
 
         pauseMenu.SetActive(false);
         gameOverMenu.SetActive(false);
-        StartGame.SetActive(true);
+        startGame.SetActive(true);
+    }
 
+    private void Start()
+    {
+        powerUpA_quantity = 0;
+        powerUpS_quantity = 0;
+        powerUpD_quantity = 0;
         powerUpA_fillBar.fillAmount = 0;
         powerUpS_fillBar.fillAmount = 0;
         powerUpD_fillBar.fillAmount = 0;
@@ -97,8 +103,8 @@ public class UIManager : MonoBehaviour
     }
     public void Update()
     {
-        FlagScoreBlu.fillAmount = GameManager.Instance.capturedBlueFlags / 3;
-        FlagScoreRed.fillAmount = GameManager.Instance.capturedRedFlags / 3;
+        flagScoreBlu.fillAmount = GameManager.Instance.capturedBlueFlags / 3;
+        flagScoreRed.fillAmount = GameManager.Instance.capturedRedFlags / 3;
     }
 
 }

@@ -1,6 +1,8 @@
-using UnityEngine;
+using Mono.Cecil.Cil;
 using System;
 using UnityEditor;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 enum GameState
 {
@@ -12,6 +14,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] KeyCode StartButton = KeyCode.F2;
     [SerializeField] KeyCode PauseButton = KeyCode.F3;
+
+    KeyCode[] easterEggCode = { KeyCode.L, KeyCode.U, KeyCode.C, KeyCode.A };
+    int index = 0;
 
     [SerializeField] AudioSource blueFlagCollected;
     [SerializeField] AudioSource redFlagCollected;
@@ -68,8 +73,26 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(StartButton))
         {
             GameStatus(GameState.Running);
-            UIManager.Instance.StartGame.SetActive(false);
+            UIManager.Instance.startGame.SetActive(false);
+
+            //SceneManager.GetSceneByBuildIndex(1);
         }
+
+        //per attivare la scena easter egg :P
+        if (UIManager.Instance.startGame.activeSelf)
+        {
+            if (Input.GetKeyDown(easterEggCode[index]))
+            {
+                index++;
+
+                if (index == easterEggCode.Length)
+                {
+                    UIManager.Instance.startGame.SetActive(false);
+                    GameStatus(GameState.Running);
+                }
+            }
+        }
+
         if (Input.GetKeyDown(PauseButton))
         {
 

@@ -7,4 +7,9 @@ public class SceneReloader : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
+    public void ToMainLevelScene()
+    {
+        SceneManager.LoadScene(1);
+    }
 }

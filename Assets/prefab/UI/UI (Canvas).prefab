@@ -465,11 +465,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7839015850167636225}
+  m_Father: {fileID: 7104485591848292719}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -68, y: -25}
+  m_AnchoredPosition: {x: -0.000015258789, y: 0.000024795532}
   m_SizeDelta: {x: 125, y: 34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6153594466431326977
@@ -823,7 +823,7 @@ GameObject:
   - component: {fileID: 5025667068038066415}
   - component: {fileID: 2277012593200002568}
   m_Layer: 5
-  m_Name: Background
+  m_Name: Score bandierine Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -843,7 +843,6 @@ RectTransform:
   m_Children:
   - {fileID: 4477717510867376928}
   - {fileID: 7104485591848292719}
-  - {fileID: 8085284750811503285}
   m_Father: {fileID: 2139112028765000179}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -3334,7 +3333,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8085284750811503285}
   m_Father: {fileID: 7839015850167636225}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
