@@ -97,8 +97,8 @@ public class UIManager : MonoBehaviour
     }
     public void Update()
     {
-        FlagScoreBlu.fillAmount = GameManager.instance.capturedBlueFlags / 3;
-        FlagScoreRed.fillAmount = GameManager.instance.capturedRedFlags / 3;
+        FlagScoreBlu.fillAmount = GameManager.Instance.capturedBlueFlags / 3;
+        FlagScoreRed.fillAmount = GameManager.Instance.capturedRedFlags / 3;
     }
 
 }

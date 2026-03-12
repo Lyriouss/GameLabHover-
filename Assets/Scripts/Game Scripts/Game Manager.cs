@@ -15,36 +15,38 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] AudioSource blueFlagCollected;
     [SerializeField] AudioSource redFlagCollected;
+    [SerializeField] AudioSource blueFlagStolen;
+    [SerializeField] AudioSource redFlagStolen;
 
     public float capturedBlueFlags;
     public float capturedRedFlags;
 
-    public static GameManager instance;
+    public static GameManager Instance;
 
     private void Awake()
     {
-        if (instance != null)
+        if (Instance != null)
         {
             Destroy(this);
             return;
         }
-        instance = this;
+        Instance = this;
     }
     private void OnEnable()
     {
-        BlueFlag.collectBlueFlag += UpdateBlueFlags;
-        RedFlag.collectRedFlag += UpdateRedFlags;
+        BlueFlag.collectBlueFlag += AddBlueFlags;
+        RedFlag.collectRedFlag += AddRedFlags;
     }
 
     private void OnDisable()
     {
-        BlueFlag.collectBlueFlag -= UpdateBlueFlags;
-        RedFlag.collectRedFlag -= UpdateRedFlags;
+        BlueFlag.collectBlueFlag -= AddBlueFlags;
+        RedFlag.collectRedFlag -= AddRedFlags;
     }
 
     private void GameStatus(GameState Status)
     {
-         switch(Status)
+        switch (Status)
         {
             case GameState.Running:
                 Time.timeScale = 1;
@@ -70,7 +72,7 @@ public class GameManager : MonoBehaviour
         }
         if (Input.GetKeyDown(PauseButton))
         {
-            
+
             if (UIManager.Instance.pauseMenu.activeSelf)
             {
                 GameStatus(GameState.Running);
@@ -99,7 +101,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateBlueFlags()
+    public void AddBlueFlags()
     {
         blueFlagCollected.Play();
         capturedBlueFlags++;
@@ -110,7 +112,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateRedFlags()
+    public void AddRedFlags()
     {
         redFlagCollected.Play();
         capturedRedFlags++;
@@ -118,6 +120,24 @@ public class GameManager : MonoBehaviour
         if (capturedRedFlags >= 3)
         {
             GameOver();
+        }
+    }
+
+    public void RemoveBlueFlags()
+    {
+        if (capturedBlueFlags > 0)
+        {
+            //blueFlagStolen.Play();
+            capturedBlueFlags--;
+        }
+    }
+
+    public void RemoveRedFlags()
+    {
+        if (capturedRedFlags > 0)
+        {
+            //redFlagStolen.Play();
+            capturedRedFlags--;
         }
     }
 

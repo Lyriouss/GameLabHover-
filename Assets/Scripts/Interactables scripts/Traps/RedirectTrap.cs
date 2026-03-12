@@ -32,7 +32,6 @@ public class RedirectTrap : MonoBehaviour
     //quando entriamo nel trigger
     public void OnTriggerEnter(Collider other)
     {
-       
         //ci gettiamo il rigidbody della navicella che ha beccato la trappola
         Rigidbody hoversRB = other.GetComponent<Rigidbody>();
         redirectedHovercraft = hoversRB;
@@ -46,6 +45,4 @@ public class RedirectTrap : MonoBehaviour
 
         isRedirected = true;
     }
-
-
 }
