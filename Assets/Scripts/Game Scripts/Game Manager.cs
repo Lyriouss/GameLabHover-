@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
         if (capturedBlueFlags >= 3)
         {
-            LevelWin();
+            WinMenu();
         }
     }
 
@@ -116,7 +116,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.TogglePauseMenu();
 
     }
-    public void LevelWin()
+    public void WinMenu()
     {
 
     }

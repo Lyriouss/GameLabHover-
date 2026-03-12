@@ -100,7 +100,7 @@ public class UIManager : MonoBehaviour
             gameOverMenu.SetActive(true);
         }
     }
-    public void RestartGame()
+    public void WinGame()
     { 
         if ( )
         {
