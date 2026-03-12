@@ -70,27 +70,24 @@ public class GameManager : MonoBehaviour
 
     public void Update()
     {
-        if (Input.GetKeyDown(StartButton))
+        if (SceneManager.GetActiveScene().buildIndex == 0 && Input.GetKeyDown(StartButton))
         {
             GameStatus(GameState.Running);
-            UIManager.Instance.startGame.SetActive(false);
 
-            //SceneManager.GetSceneByBuildIndex(1);
+            SceneManager.LoadScene(1);
         }
 
         //per attivare la scena easter egg :P
-        if (UIManager.Instance.startGame.activeSelf)
+        if (UIManager.Instance.startGame.activeSelf && Input.GetKeyDown(easterEggCode[index]))
         {
-            if (Input.GetKeyDown(easterEggCode[index]))
-            {
-                index++;
+            index++;
 
-                if (index == easterEggCode.Length)
-                {
-                    UIManager.Instance.startGame.SetActive(false);
-                    GameStatus(GameState.Running);
-                }
+            if (index == easterEggCode.Length)
+            {
+                UIManager.Instance.startGame.SetActive(false);
+                GameStatus(GameState.Running);
             }
+
         }
 
         if (Input.GetKeyDown(PauseButton))

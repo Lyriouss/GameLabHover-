@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -56,6 +57,17 @@ public class UIManager : MonoBehaviour
         slow_fillBar.fillAmount = 0;
     }
 
+    public void Update()
+    {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            startGame.SetActive(false);
+        }
+
+        flagScoreBlu.fillAmount = GameManager.Instance.capturedBlueFlags / 3;
+        flagScoreRed.fillAmount = GameManager.Instance.capturedRedFlags / 3;
+    }
+
     public void TogglePauseMenu()
     {
         pauseMenu.SetActive(true);
@@ -101,10 +113,4 @@ public class UIManager : MonoBehaviour
             powerUpD_TXT.text = powerUpD_quantity.ToString();
         }
     }
-    public void Update()
-    {
-        flagScoreBlu.fillAmount = GameManager.Instance.capturedBlueFlags / 3;
-        flagScoreRed.fillAmount = GameManager.Instance.capturedRedFlags / 3;
-    }
-
 }
