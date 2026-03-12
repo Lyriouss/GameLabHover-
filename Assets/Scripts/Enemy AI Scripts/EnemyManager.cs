@@ -28,7 +28,6 @@ public class EnemyManager : MonoBehaviour, IEnemyStateMachine
     public LayerMask targetMask;
     public float detectionRadius = 20f;
     public float timeBeforeChange = 3f;
-    [HideInInspector] public Transform target;
 
     [Header("Ground Check")]
     public LayerMask groundLayer;
@@ -38,6 +37,7 @@ public class EnemyManager : MonoBehaviour, IEnemyStateMachine
     public float timeStayStill = 3f;
 
     [Header("In Script Values")]
+    public Transform target;
     public Vector3 lastFacing;
     public bool isMoving;
     public bool isRotating;
@@ -75,11 +75,12 @@ public class EnemyManager : MonoBehaviour, IEnemyStateMachine
 
     private void OnCollisionEnter(Collision other)
     {
-        esm.ChangeState(new PatrolState(this));
-
-        if (other.collider.CompareTag("Player"))
+        if (other.collider.CompareTag("Player") || other.collider.CompareTag("Enemy"))
         {
             collision.Play();
+            enemyRB.angularVelocity = Vector3.zero;
+            enemyRB.linearVelocity = Vector3.zero;
+            esm.ChangeState(new PatrolState(this));
         }
     }
 

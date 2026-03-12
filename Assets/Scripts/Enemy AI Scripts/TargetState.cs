@@ -26,15 +26,29 @@ public class TargetState : IEnemyState, IEnemyMovement
 
     public void Update()
     {
-        CheckForTarget();
+        if (em.target != null)
+        {
+            CheckForTarget();
 
-        em.navMeshA.destination = em.target.position;
+            em.navMeshA.destination = em.target.position;
+        }
+        else
+        {
+            em.ChangeState(new PatrolState(em));
+        }
     }
 
     public void FixedUpdate()
     {
-        RotateVehicle();
-        RegulateMovement();
+        if (em.target != null)
+        {
+            RotateVehicle();
+            RegulateMovement();
+        }
+        else
+        {
+            em.ChangeState(new PatrolState(em));
+        }
 
         CheckGround();
     }
@@ -65,7 +79,7 @@ public class TargetState : IEnemyState, IEnemyMovement
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(em.enemyRB.position, Vector3.down, out hit, em.groundDistance, em.groundLayer))
+        if (Physics.Raycast(em.enemyRB.position, Vector3.down, out hit, em.groundDistance + 0.2f, em.groundLayer))
         {
             em.enemyRB.useGravity = false;
 

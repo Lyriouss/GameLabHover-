@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
+using Unity.VisualScripting;
 
 public class UIManager : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class UIManager : MonoBehaviour
 
     [Header("Score management")]
     [SerializeField] public TMP_Text score;
+    [SerializeField] public Image FlagScoreBlu;
+    [SerializeField] public Image FlagScoreRed;
 
     private void Awake()
     {
@@ -91,6 +94,11 @@ public class UIManager : MonoBehaviour
             powerUpD_quantity -= 1;
             powerUpD_TXT.text = powerUpD_quantity.ToString();
         }
+    }
+    public void Update()
+    {
+        FlagScoreBlu.fillAmount = GameManager.Instance.capturedBlueFlags / 3;
+        FlagScoreRed.fillAmount = GameManager.Instance.capturedRedFlags / 3;
     }
 
 }
