@@ -92,5 +92,20 @@ public class UIManager : MonoBehaviour
             powerUpD_TXT.text = powerUpD_quantity.ToString();
         }
     }
-
+    /*public void GameOver()
+    {
+        if ( )
+        {
+            Time.timeScale = 0;
+            gameOverMenu.SetActive(true);
+        }
+    }
+    public void RestartGame()
+    { 
+        if ( )
+        {
+            Time.timeScale = 0;
+            gameOverMenu.SetActive(true); 
+        }
+    }*/
 }
