@@ -16,9 +16,20 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioSource blueFlagCollected;
     [SerializeField] AudioSource redFlagCollected;
 
-    private int capturedBlueFlags;
-    private int capturedRedFlags;
+    public float capturedBlueFlags;
+    public float capturedRedFlags;
 
+    public static GameManager instance;
+
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(this);
+            return;
+        }
+        instance = this;
+    }
     private void OnEnable()
     {
         BlueFlag.collectBlueFlag += UpdateBlueFlags;
@@ -118,7 +129,8 @@ public class GameManager : MonoBehaviour
     }
     public void WinMenu()
     {
-
+        GameStatus(GameState.Paused);
+        UIManager.Instance.GameOverMenu();
     }
     public void GameOver()
     {
