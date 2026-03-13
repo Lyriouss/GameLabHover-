@@ -1,12 +1,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlagSpawner : MonoBehaviour
+public class BlueFlagSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject flag;
     [SerializeField] private LayerMask flagMask;
     private List<Transform> flagSpawnPositions;
     private int forCount;
+
+    private void OnEnable()
+    {
+        GameManager.spawnNewBlueFlag += SpawnFlag;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.spawnNewBlueFlag -= SpawnFlag;
+    }
 
     private void Awake()
     {
@@ -38,7 +48,7 @@ public class FlagSpawner : MonoBehaviour
         }
         else
         {
-            forCount--;
+            SpawnFlag();
         }
     }
 }

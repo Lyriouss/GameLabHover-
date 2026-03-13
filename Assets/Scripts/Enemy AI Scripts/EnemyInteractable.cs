@@ -14,5 +14,10 @@ public class EnemyInteractable : MonoBehaviour
                 Destroy(other.gameObject);
             }
         }
+
+        if (other.CompareTag("Powerup"))
+        {
+            Destroy(other.gameObject);
+        }
     }
 }

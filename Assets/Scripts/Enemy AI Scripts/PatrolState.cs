@@ -65,7 +65,7 @@ public class PatrolState : IEnemyState, IEnemyMovement
         else
             em.isMoving = false;
 
-        if (angleCheck > 0.5f && !em.isRotating && !em.needsToStop && em.isMoving)
+        if (angleCheck > 0.75f && !em.isRotating && !em.needsToStop && em.isMoving)
         {
             em.isRotating = true;
             em.needsToStop = true;
