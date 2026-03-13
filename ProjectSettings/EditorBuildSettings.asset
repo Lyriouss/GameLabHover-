@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/0- Main (Easter Egg).unity
+    path: Assets/Scenes/Main (Easter Egg).unity
     guid: 8f817ebd51409514c9c3ad7ef741f266
   - enabled: 1
     path: Assets/Scenes/CityLevel.unity
