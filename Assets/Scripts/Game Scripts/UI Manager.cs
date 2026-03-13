@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour

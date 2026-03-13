@@ -4237,12 +4237,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpsManager
   player: {fileID: 0}
-  jumpForce: 20
+  jumpForce: 10
   tempWallPrefab: {fileID: 5145729463545695884, guid: 2e71856d6b83fdd44bf907e79901beb8, type: 3}
   wallTimerDuration: 10
   wallDistance: 3
   invTimerDuration: 10
   shieldTimerDuration: 20
+  isShielded: 0
   hasteTimerDuration: 15
   slowTimerDuration: 15
   jumpCollect: {fileID: 8647866366922722185}

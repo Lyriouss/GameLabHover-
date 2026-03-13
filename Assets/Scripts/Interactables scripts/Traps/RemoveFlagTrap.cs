@@ -26,6 +26,9 @@ public class RemoveFlagTrap : MonoBehaviour
     //quando entriamo nel trigger
     public void OnTriggerEnter(Collider other)
     {
+        if (PowerUpsManager.Instance.isShielded)
+            return;
+
         //ci gettiamo il rigidbody della navicella che ha beccato la trappola
         Rigidbody hoversRB = other.GetComponent<Rigidbody>();
         losingHovercraft = hoversRB;

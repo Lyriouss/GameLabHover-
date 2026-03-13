@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5678472208577737413}
   m_Layer: 12
   m_Name: Invisibilty Bubble
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

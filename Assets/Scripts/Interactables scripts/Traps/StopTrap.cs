@@ -43,6 +43,9 @@ public class StopTrap : MonoBehaviour
     //quando entriamo nel trigger
     public void OnTriggerEnter(Collider other)
     {
+        if (PowerUpsManager.Instance.isShielded)
+            return;
+
         //se la trappola è già attiva, non far nulla
         if (isStopped) return;
 

@@ -34,7 +34,7 @@ public class PowerUpsManager : MonoBehaviour
     //Shield Power Up stats
     private float shieldTimer = 0f;
     public float shieldTimerDuration = 15f;
-    private bool isShielded = false;
+    public bool isShielded = false;
 
     //Haste Power Up stats
     private float hasteTimer = 0f;

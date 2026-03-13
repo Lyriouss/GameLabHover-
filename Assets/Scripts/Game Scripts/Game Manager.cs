@@ -1,6 +1,4 @@
-using Mono.Cecil.Cil;
 using System;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -25,6 +23,8 @@ public class GameManager : MonoBehaviour
 
     public float capturedBlueFlags;
     public float capturedRedFlags;
+
+    public static event Action spawnNewBlueFlag, spawnNewRedFlag;
 
     public static GameManager Instance;
 
@@ -152,6 +152,7 @@ public class GameManager : MonoBehaviour
         {
             //blueFlagStolen.Play();
             capturedBlueFlags--;
+            spawnNewBlueFlag?.Invoke();
         }
     }
 
@@ -161,6 +162,7 @@ public class GameManager : MonoBehaviour
         {
             //redFlagStolen.Play();
             capturedRedFlags--;
+            spawnNewRedFlag?.Invoke();
         }
     }
 

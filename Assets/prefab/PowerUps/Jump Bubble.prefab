@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 1988292107855707023}
   m_Layer: 12
   m_Name: Jump Bubble
-  m_TagString: Untagged
+  m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

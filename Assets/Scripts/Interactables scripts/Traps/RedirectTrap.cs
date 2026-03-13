@@ -31,6 +31,9 @@ public class RedirectTrap : MonoBehaviour
     //quando entriamo nel trigger
     private void OnTriggerEnter(Collider other)
     {
+        if (PowerUpsManager.Instance.isShielded)
+            return;
+
         //ci gettiamo il rigidbody della navicella che ha beccato la trappola
         Rigidbody hoversRB = other.GetComponent<Rigidbody>();
         redirectedHovercraft = hoversRB;
