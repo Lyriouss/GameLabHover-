@@ -1,8 +1,20 @@
 using UnityEngine;
 
+enum MoveState 
+{
+    Idle,
+    Running,
+    Fast,
+    Slow
+}
+
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement Instance;
+
+    MoveState moveState;
+    private string changeSound;
+    private string currentSound;
 
     public Rigidbody playerRB;
     public float moveForward;
@@ -19,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
     public float rayLenght = 10f;
 
     [Header("Audio")]
+    [SerializeField] private AudioSource engineIdle;
+    [SerializeField] private AudioSource engineRun;
+    [SerializeField] private AudioSource engineHaste;
+    [SerializeField] private AudioSource engineSlow;
     [SerializeField] private AudioSource jumpEnd;
     [SerializeField] private AudioSource collisionWall;
 
@@ -32,6 +48,12 @@ public class PlayerMovement : MonoBehaviour
         Instance = this;
 
         playerRB = GetComponent<Rigidbody>();
+    }
+
+    private void Start()
+    {
+        changeSound = null;
+        currentSound = null;
     }
 
     public void FixedUpdate()
@@ -48,11 +70,94 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveForward != 0)
         {
+            if (PowerUpsManager.Instance.isFast)
+            {
+                engineIdle.loop = false;
+                engineRun.loop = false;
+                engineHaste.loop = true;
+                engineSlow.loop = false;
+
+                moveState = MoveState.Fast;
+                changeSound = "Fast";
+            }
+            else if (PowerUpsManager.Instance.isSlow)
+            {
+                engineIdle.loop = false;
+                engineRun.loop = false;
+                engineHaste.loop = false;
+                engineSlow.loop = true;
+
+                moveState = MoveState.Slow;
+                changeSound = "Slow";
+            }
+            else
+            {
+                engineIdle.loop = false;
+                engineRun.loop = true;
+                engineHaste.loop = false;
+                engineSlow.loop = false;
+
+                moveState = MoveState.Running;
+                changeSound = "Running";
+            }
+
             playerRB.AddForce(transform.forward * moveForward * accelerationForce, ForceMode.Acceleration);
 
             if (playerRB.linearVelocity.magnitude > maxSpeed)
             {
                 playerRB.linearVelocity = playerRB.linearVelocity.normalized * maxSpeed;
+            }
+        }
+        else
+        {
+            engineIdle.loop = true;
+            engineRun.loop = false;
+            engineHaste.loop = false;
+            engineSlow.loop = false;
+
+            moveState = MoveState.Idle;
+            changeSound = "Idle";
+        }
+
+        if (changeSound != currentSound)
+        {
+            switch (moveState)
+            {
+                case MoveState.Idle:
+                    engineIdle.Play();
+                    currentSound = "Idle";
+
+                    engineRun.Stop();
+                    engineHaste.Stop();
+                    engineSlow.Stop();
+                    break;
+
+                case MoveState.Running:
+                    engineRun.Play();
+                    currentSound = "Running";
+
+                    engineIdle.Stop();
+                    engineHaste.Stop();
+                    engineSlow.Stop();
+                    break;
+
+                case MoveState.Fast:
+                    engineHaste.Play();
+                    currentSound = "Fast";
+
+                    engineRun.Stop();
+                    engineIdle.Stop();
+                    engineSlow.Stop();
+                    break;
+
+                case MoveState.Slow:
+                    engineSlow.Play();
+                    currentSound = "Slow";
+
+                    engineRun.Stop();
+                    engineHaste.Stop();
+                    engineIdle.Stop();
+                    break;
             }
         }
 

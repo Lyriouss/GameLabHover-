@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class RemoveFlagTrap : MonoBehaviour
 {
+    [SerializeField] AudioSource playerFlagDrop;
+    [SerializeField] AudioSource enemyFlagDrop;
     private Rigidbody losingHovercraft; //quale hovercraft perde la bandeira
     private bool isLosing;
     private Collider trapCollider;
@@ -26,30 +28,38 @@ public class RemoveFlagTrap : MonoBehaviour
     //quando entriamo nel trigger
     public void OnTriggerEnter(Collider other)
     {
-        if (PowerUpsManager.Instance.isShielded)
-            return;
-
-        //ci gettiamo il rigidbody della navicella che ha beccato la trappola
-        Rigidbody hoversRB = other.GetComponent<Rigidbody>();
-        losingHovercraft = hoversRB;
-
-        //prendiamo il suo tag per capire se è friend or foe
-        string hoverTag = losingHovercraft.gameObject.tag;
-
-        //se è enemy
-        if (hoverTag == "Enemy")
+        if (other.gameObject.CompareTag("Player"))
         {
+            if (PowerUpsManager.Instance.isShielded)
+                return;
+
+            playerFlagDrop.Play();
+
+            ////ci gettiamo il rigidbody della navicella che ha beccato la trappola
+            //Rigidbody hoversRB = other.GetComponent<Rigidbody>();
+            //losingHovercraft = hoversRB;
+
+            ////prendiamo il suo tag per capire se è friend or foe
+            //string hoverTag = losingHovercraft.gameObject.tag;
+
             //abbassa di uno il suo punteggio
-            GameManager.Instance.RemoveRedFlags();
+            GameManager.Instance.RemoveBlueFlags();
 
             isLosing = true;
         }
-
-        //se è il player
-        else if (hoverTag == "Player")
+        else if (other.gameObject.CompareTag("Enemy"))
         {
+            playerFlagDrop.Play();
+
+            ////ci gettiamo il rigidbody della navicella che ha beccato la trappola
+            //Rigidbody hoversRB = other.GetComponent<Rigidbody>();
+            //losingHovercraft = hoversRB;
+
+            ////prendiamo il suo tag per capire se è friend or foe
+            //string hoverTag = losingHovercraft.gameObject.tag;
+
             //abbassa di uno il suo punteggio
-            GameManager.Instance.RemoveBlueFlags();
+            GameManager.Instance.RemoveRedFlags();
 
             isLosing = true;
         }

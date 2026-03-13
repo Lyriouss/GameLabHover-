@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RedirectTrap : MonoBehaviour
 {
+    [SerializeField] AudioSource pushTrap; 
     //Stop trap stats
     private Rigidbody redirectedHovercraft; //gli hovercraft da spingere
     public float pushForce = 10f; //la forza con cui vengono spinti
@@ -31,23 +32,46 @@ public class RedirectTrap : MonoBehaviour
     //quando entriamo nel trigger
     private void OnTriggerEnter(Collider other)
     {
-        if (PowerUpsManager.Instance.isShielded)
-            return;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (PowerUpsManager.Instance.isShielded)
+                return;
 
-        //ci gettiamo il rigidbody della navicella che ha beccato la trappola
-        Rigidbody hoversRB = other.GetComponent<Rigidbody>();
-        redirectedHovercraft = hoversRB;
+            pushTrap.Play();
 
-        redirectedHovercraft.angularVelocity = Vector3.zero;
-        redirectedHovercraft.linearVelocity = Vector3.zero;
+            //ci gettiamo il rigidbody della navicella che ha beccato la trappola
+            Rigidbody hoversRB = other.GetComponent<Rigidbody>();
+            redirectedHovercraft = hoversRB;
 
-        //centriamo il player mantenendo la sua altezza
-        Vector3 trapCenter = new Vector3(transform.position.x, redirectedHovercraft.position.y, transform.position.z);
-        redirectedHovercraft.MovePosition(trapCenter);
+            redirectedHovercraft.angularVelocity = Vector3.zero;
+            redirectedHovercraft.linearVelocity = Vector3.zero;
 
-        //gli diamo la stessa direzione in cui "punta" la trappola
-        redirectedHovercraft.MoveRotation(Quaternion.Euler(0f, transform.eulerAngles.y, 0f));
+            //centriamo il player mantenendo la sua altezza
+            Vector3 trapCenter = new Vector3(transform.position.x, redirectedHovercraft.position.y, transform.position.z);
+            redirectedHovercraft.MovePosition(trapCenter);
 
-        isRedirected = true;
+            //gli diamo la stessa direzione in cui "punta" la trappola
+            redirectedHovercraft.MoveRotation(Quaternion.Euler(0f, transform.eulerAngles.y, 0f));
+
+            isRedirected = true;
+        }
+        else if (other.gameObject.CompareTag("Enemy"))
+        {
+            //ci gettiamo il rigidbody della navicella che ha beccato la trappola
+            Rigidbody hoversRB = other.GetComponent<Rigidbody>();
+            redirectedHovercraft = hoversRB;
+
+            redirectedHovercraft.angularVelocity = Vector3.zero;
+            redirectedHovercraft.linearVelocity = Vector3.zero;
+
+            //centriamo il player mantenendo la sua altezza
+            Vector3 trapCenter = new Vector3(transform.position.x, redirectedHovercraft.position.y, transform.position.z);
+            redirectedHovercraft.MovePosition(trapCenter);
+
+            //gli diamo la stessa direzione in cui "punta" la trappola
+            redirectedHovercraft.MoveRotation(Quaternion.Euler(0f, transform.eulerAngles.y, 0f));
+
+            isRedirected = true;
+        }
     }
 }
