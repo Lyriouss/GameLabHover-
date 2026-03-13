@@ -47,21 +47,21 @@ public class RemoveFlagTrap : MonoBehaviour
 
             isLosing = true;
         }
-        else if (other.gameObject.CompareTag("Enemy"))
-        {
-            playerFlagDrop.Play();
+        //else if (other.gameObject.CompareTag("Enemy"))
+        //{
+        //    playerFlagDrop.Play();
 
-            ////ci gettiamo il rigidbody della navicella che ha beccato la trappola
-            //Rigidbody hoversRB = other.GetComponent<Rigidbody>();
-            //losingHovercraft = hoversRB;
+        //    ////ci gettiamo il rigidbody della navicella che ha beccato la trappola
+        //    //Rigidbody hoversRB = other.GetComponent<Rigidbody>();
+        //    //losingHovercraft = hoversRB;
 
-            ////prendiamo il suo tag per capire se è friend or foe
-            //string hoverTag = losingHovercraft.gameObject.tag;
+        //    ////prendiamo il suo tag per capire se è friend or foe
+        //    //string hoverTag = losingHovercraft.gameObject.tag;
 
-            //abbassa di uno il suo punteggio
-            GameManager.Instance.RemoveRedFlags();
+        //    //abbassa di uno il suo punteggio
+        //    GameManager.Instance.RemoveRedFlags();
 
-            isLosing = true;
-        }
+        //    isLosing = true;
+        //}
     }
 }

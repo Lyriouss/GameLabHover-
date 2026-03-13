@@ -33541,6 +33541,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2139597359928965499, guid: c6b90719cc1bfa5419e24118e9148da0, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139597359928965499, guid: c6b90719cc1bfa5419e24118e9148da0, type: 3}
+      propertyPath: m_Acceleration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2139597359928965499, guid: c6b90719cc1bfa5419e24118e9148da0, type: 3}
       propertyPath: m_AngularSpeed
       value: 30
       objectReference: {fileID: 0}
@@ -37522,6 +37530,14 @@ PrefabInstance:
     - target: {fileID: 7426396777646750000, guid: 84f1d118738e6ec4c9b2816c4ec885b0, type: 3}
       propertyPath: rotationSpeed
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224837305639548073, guid: 84f1d118738e6ec4c9b2816c4ec885b0, type: 3}
+      propertyPath: m_Radius
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8224837305639548073, guid: 84f1d118738e6ec4c9b2816c4ec885b0, type: 3}
+      propertyPath: m_Acceleration
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 8224837305639548073, guid: 84f1d118738e6ec4c9b2816c4ec885b0, type: 3}
       propertyPath: m_AngularSpeed

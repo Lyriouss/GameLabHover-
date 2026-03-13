@@ -55,13 +55,13 @@ public class TargetState : IEnemyState, IEnemyMovement
 
     public void RotateVehicle()
     {
-        Quaternion targetRotation = Quaternion.LookRotation(em.target.position - em.transform.position);
-        em.enemyRB.transform.rotation = Quaternion.RotateTowards(em.transform.rotation, targetRotation, em.rotationSpeed * Time.fixedDeltaTime);
+        Quaternion targetRotation = Quaternion.LookRotation(em.target.position - em.enemyRB.transform.position);
+        em.enemyRB.transform.rotation = Quaternion.RotateTowards(em.enemyRB.transform.rotation, targetRotation, em.rotationSpeed * Time.fixedDeltaTime);
     }
 
     public void RegulateMovement()
     {
-        if (Physics.Raycast(em.enemyRB.position, em.transform.forward, em.detectionRadius, em.targetMask)) 
+        if (Physics.Raycast(em.enemyRB.position, em.enemyRB.transform.forward, em.detectionRadius, em.targetMask)) 
         {
             em.navMeshA.speed = em.targetSpeed;
         }
@@ -96,16 +96,16 @@ public class TargetState : IEnemyState, IEnemyMovement
 
     public void CheckForTarget()
     {
-        rayDirection = (em.target.transform.position - em.transform.position).normalized;
+        rayDirection = (em.target.transform.position - em.enemyRB.transform.position).normalized;
 
         RaycastHit hit;
 
         //gets the distance from an obstacle if there is one present in between target and enemy
-        if (Physics.Raycast(em.transform.position, rayDirection, out hit, em.detectionRadius, em.obstacleMask))
+        if (Physics.Raycast(em.enemyRB.transform.position, rayDirection, out hit, em.detectionRadius, em.obstacleMask))
         {
             if (hit.collider != null)
             {
-                rayDistance = Vector3.Distance(em.transform.position, hit.collider.transform.position);
+                rayDistance = Vector3.Distance(em.enemyRB.transform.position, hit.collider.transform.position);
             }
         }
         else
@@ -114,9 +114,15 @@ public class TargetState : IEnemyState, IEnemyMovement
         }
 
         //checks if the enemy can the see the target
-        if (!Physics.Raycast(em.transform.position, rayDirection, rayDistance, em.targetMask))
+        if (!Physics.Raycast(em.enemyRB.transform.position, rayDirection, rayDistance, em.targetMask))
         {
             em.ChangeState(new PatrolState(em));
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(em.target.transform.position, em.enemyRB.transform.position);
     }
 }

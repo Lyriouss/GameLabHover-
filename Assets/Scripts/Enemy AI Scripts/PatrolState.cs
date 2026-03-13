@@ -93,10 +93,10 @@ public class PatrolState : IEnemyState, IEnemyMovement
         //after it stops moving, start rotating the enemy
         else if (em.isRotating && !em.needsToStop)
         {
-            em.navMeshA.speed = 0.05f;
+            em.navMeshA.speed = 0.1f;
 
             //only when the difference between current rotation angle and last rotation angle is less than 0.5
-            if (angleCheck <= 0.25f)
+            if (angleCheck <= 0.5f)
                 em.isRotating = false;
         }
         //after rotation is complete, move the enemy
@@ -133,7 +133,7 @@ public class PatrolState : IEnemyState, IEnemyMovement
     public void CheckForTarget()
     {
         //when detecting a target of enemy
-        Collider[] check = Physics.OverlapSphere(em.transform.position, em.detectionRadius, em.targetMask);
+        Collider[] check = Physics.OverlapSphere(em.enemyRB.transform.position, em.detectionRadius, em.targetMask);
 
         if (check.Length == 0)
             return;
@@ -141,11 +141,11 @@ public class PatrolState : IEnemyState, IEnemyMovement
         foreach (Collider target in check)
         {
             //gets direction and distance from target
-            Vector3 rayDirection = (target.transform.position - em.transform.position).normalized;
-            float rayDistance = Vector3.Distance(target.transform.position, em.transform.position);
+            Vector3 rayDirection = (target.transform.position - em.enemyRB.transform.position).normalized;
+            float rayDistance = Vector3.Distance(target.transform.position, em.enemyRB.transform.position);
 
             //and casts a RayCast to see if there are any obstacles in the way (is in line of sight)
-            if (!Physics.Raycast(em.transform.position, rayDirection, rayDistance, em.obstacleMask))
+            if (!Physics.Raycast(em.enemyRB.transform.position, rayDirection, rayDistance, em.obstacleMask))
             {
                 //if no obstacles were detected, changes enemy state and assigns target
                 em.target = target.transform;
@@ -157,7 +157,7 @@ public class PatrolState : IEnemyState, IEnemyMovement
     //when reaching path destination, gets another destination to travel to
     public void DesReachedCheck()
     {
-        float CheckDistance = Vector3.Distance(em.patrolPositions[em.randomDes].position, em.transform.position);
+        float CheckDistance = Vector3.Distance(em.patrolPositions[em.randomDes].position, em.enemyRB.transform.position);
 
         if (CheckDistance < 3f)
         {
