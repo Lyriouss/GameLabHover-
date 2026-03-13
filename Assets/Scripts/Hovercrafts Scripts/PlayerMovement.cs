@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     MoveState moveState;
     private string changeSound;
-    private string currentSound;
+    public string currentSound;
 
     public Rigidbody playerRB;
     public float moveForward;
@@ -31,10 +31,10 @@ public class PlayerMovement : MonoBehaviour
     public float rayLenght = 10f;
 
     [Header("Audio")]
-    [SerializeField] private AudioSource engineIdle;
-    [SerializeField] private AudioSource engineRun;
-    [SerializeField] private AudioSource engineHaste;
-    [SerializeField] private AudioSource engineSlow;
+    public AudioSource engineIdle;
+    public AudioSource engineRun;
+    public AudioSource engineHaste;
+    public AudioSource engineSlow;
     [SerializeField] private AudioSource jumpEnd;
     [SerializeField] private AudioSource collisionWall;
 

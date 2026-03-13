@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 enum GameState
 {
     Running,
-    Paused,
+    Paused
 }
 
 public class GameManager : MonoBehaviour
@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioSource redFlagCollected;
     [SerializeField] AudioSource blueFlagStolen;
     [SerializeField] AudioSource redFlagStolen;
+    [SerializeField] AudioSource music;
+    [SerializeField] AudioSource levelWin;
+    [SerializeField] AudioSource levelLose;
 
     public float capturedBlueFlags;
     public float capturedRedFlags;
@@ -98,13 +101,43 @@ public class GameManager : MonoBehaviour
             if (UIManager.Instance.pauseMenu.activeSelf)
             {
                 GameStatus(GameState.Running);
+
+                music.UnPause();
+
+                switch (PlayerMovement.Instance.currentSound)
+                {
+                    case "Idle":
+                        PlayerMovement.Instance.engineIdle.Play();
+                        break;
+
+                    case "Running":
+                        PlayerMovement.Instance.engineRun.Play();
+                        break;
+
+                    case "Haste":
+                        PlayerMovement.Instance.engineHaste.Play();
+                        break;
+
+                    case "Slow":
+                        PlayerMovement.Instance.engineSlow.Play();
+                        break;
+                }
+
                 UIManager.Instance.pauseMenu.SetActive(false);
             }
 
             else
             {
                 GameStatus(GameState.Paused);
+
+                music.Pause();
+
                 UIManager.Instance.TogglePauseMenu();
+
+                PlayerMovement.Instance.engineIdle.Stop();
+                PlayerMovement.Instance.engineRun.Stop();
+                PlayerMovement.Instance.engineHaste.Stop();
+                PlayerMovement.Instance.engineSlow.Stop();
             }
         }
 
@@ -169,18 +202,30 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         GameStatus(GameState.Paused);
+
         UIManager.Instance.TogglePauseMenu();
 
     }
     public void WinMenu()
     {
         GameStatus(GameState.Paused);
+        levelWin.Play();
+        music.Stop();
+        PlayerMovement.Instance.engineIdle.Stop();
+        PlayerMovement.Instance.engineRun.Stop();
+        PlayerMovement.Instance.engineHaste.Stop();
+        PlayerMovement.Instance.engineSlow.Stop();
         UIManager.Instance.GameOverMenu();
     }
     public void GameOver()
     {
         GameStatus(GameState.Paused);
+        levelLose.Play();
+        music.Stop();
+        PlayerMovement.Instance.engineIdle.Stop();
+        PlayerMovement.Instance.engineRun.Stop();
+        PlayerMovement.Instance.engineHaste.Stop();
+        PlayerMovement.Instance.engineSlow.Stop();
         UIManager.Instance.GameOverMenu();
     }
-
 }
