@@ -66,6 +66,11 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         GameStatus(GameState.Paused);
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            GameStatus(GameState.Running);
+        }
     }
 
     public void Update()
@@ -73,11 +78,6 @@ public class GameManager : MonoBehaviour
         if (SceneManager.GetActiveScene().buildIndex == 0 && Input.GetKeyDown(StartButton))
         {
             SceneManager.LoadScene(1);
-        }
-
-        if (SceneManager.GetActiveScene().buildIndex == 1)
-        {
-            GameStatus(GameState.Running);
         }
 
         //per attivare la scena easter egg :P
@@ -90,7 +90,6 @@ public class GameManager : MonoBehaviour
                 UIManager.Instance.startGame.SetActive(false);
                 GameStatus(GameState.Running);
             }
-
         }
 
         if (Input.GetKeyDown(PauseButton))
@@ -101,6 +100,7 @@ public class GameManager : MonoBehaviour
                 GameStatus(GameState.Running);
                 UIManager.Instance.pauseMenu.SetActive(false);
             }
+
             else
             {
                 GameStatus(GameState.Paused);
