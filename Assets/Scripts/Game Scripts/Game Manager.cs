@@ -72,9 +72,12 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().buildIndex == 0 && Input.GetKeyDown(StartButton))
         {
-            GameStatus(GameState.Running);
-
             SceneManager.LoadScene(1);
+        }
+
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            GameStatus(GameState.Running);
         }
 
         //per attivare la scena easter egg :P
