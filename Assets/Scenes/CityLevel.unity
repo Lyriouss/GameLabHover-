@@ -10144,6 +10144,11 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &504686721 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8110296470332523380, guid: 88d0ed6d6816cf04ca027b6c2519a3d5, type: 3}
+  m_PrefabInstance: {fileID: 1306350680}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &512370846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39697,6 +39702,10 @@ PrefabInstance:
       propertyPath: powerUpS_fillBar
       value: 
       objectReference: {fileID: 1306350689}
+    - target: {fileID: 8818711839324579378, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+      propertyPath: velocity_fillbar
+      value: 
+      objectReference: {fileID: 504686721}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
