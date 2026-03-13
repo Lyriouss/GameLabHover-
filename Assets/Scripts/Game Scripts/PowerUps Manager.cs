@@ -39,14 +39,14 @@ public class PowerUpsManager : MonoBehaviour
     //Haste Power Up stats
     private float hasteTimer = 0f;
     public float hasteTimerDuration = 10f;
-    private bool isFast = false;
+    public bool isFast = false;
     private float originalAcceleration;
     private float originalSpeed;
 
     //Slowed Down Power Up stats
     private float slowTimer = 0f;
     public float slowTimerDuration = 10f;
-    private bool isSlow = false;
+    public bool isSlow = false;
 
     [Header("Audio")]
     [SerializeField] private AudioSource jumpCollect;

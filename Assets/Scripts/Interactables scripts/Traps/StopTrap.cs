@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class StopTrap : MonoBehaviour
 {
+    [SerializeField] AudioSource stopTrap;
+
     //Stop trap stats
     private Rigidbody trappedHovercraft; //gli hovercraft da intrappolare
     private float stopTimer = 0f;
@@ -43,26 +45,51 @@ public class StopTrap : MonoBehaviour
     //quando entriamo nel trigger
     public void OnTriggerEnter(Collider other)
     {
-        if (PowerUpsManager.Instance.isShielded)
-            return;
+        if (other.gameObject.CompareTag("Player"))
+        {
+            if (PowerUpsManager.Instance.isShielded)
+                return;
 
-        //se la trappola è già attiva, non far nulla
-        if (isStopped) return;
+            stopTrap.Play();
 
-        //ci gettiamo il rigidbody della navicella che ha beccato la trappola
-        Rigidbody hoversRB = other.GetComponent<Rigidbody>();
-        trappedHovercraft = hoversRB;
+            //se la trappola è già attiva, non far nulla
+            if (isStopped) return;
 
-        //centriamo il player mantenendo la sua altezza
-        Vector3 trapCenter = new Vector3(transform.position.x, trappedHovercraft.position.y, transform.position.z);
-        trappedHovercraft.MovePosition(trapCenter);
+            //ci gettiamo il rigidbody della navicella che ha beccato la trappola
+            Rigidbody hoversRB = other.GetComponent<Rigidbody>();
+            trappedHovercraft = hoversRB;
 
-        //reset timer
-        stopTimer = 0f;
-        isStopped = true;
+            //centriamo il player mantenendo la sua altezza
+            Vector3 trapCenter = new Vector3(transform.position.x, trappedHovercraft.position.y, transform.position.z);
+            trappedHovercraft.MovePosition(trapCenter);
 
-        //disattiviamo il collider per evitare altri ingressi
-        trapCollider.enabled = false;
+            //reset timer
+            stopTimer = 0f;
+            isStopped = true;
+
+            //disattiviamo il collider per evitare altri ingressi
+            trapCollider.enabled = false;
+        }
+        else if (other.gameObject.CompareTag("Enemy"))
+        {
+            //se la trappola è già attiva, non far nulla
+            if (isStopped) return;
+
+            //ci gettiamo il rigidbody della navicella che ha beccato la trappola
+            Rigidbody hoversRB = other.GetComponent<Rigidbody>();
+            trappedHovercraft = hoversRB;
+
+            //centriamo il player mantenendo la sua altezza
+            Vector3 trapCenter = new Vector3(transform.position.x, trappedHovercraft.position.y, transform.position.z);
+            trappedHovercraft.MovePosition(trapCenter);
+
+            //reset timer
+            stopTimer = 0f;
+            isStopped = true;
+
+            //disattiviamo il collider per evitare altri ingressi
+            trapCollider.enabled = false;
+        }
     }
 
     private void OnTriggerExit(Collider other)

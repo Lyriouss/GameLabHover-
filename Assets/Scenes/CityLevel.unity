@@ -396,6 +396,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1525,6 +1529,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1877,6 +1885,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1848168414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &83737603 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1699818968962978432, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1772550880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &84747538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4059,6 +4072,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4604,6 +4621,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 834310968}
     m_Modifications:
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: enemyFlagDrop
+      value: 
+      objectReference: {fileID: 1964762051}
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: playerFlagDrop
+      value: 
+      objectReference: {fileID: 1357166593}
     - target: {fileID: 764967880790115042, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
       propertyPath: m_Name
       value: RemoveFlag Trap (6)
@@ -4779,6 +4804,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4906,6 +4935,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5531,6 +5564,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5758,6 +5795,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6611,6 +6652,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8195611590457459526, guid: bfa1a665162ff764ca67d5d40d569e34, type: 3}
   m_PrefabInstance: {fileID: 283156369}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &285901380 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4350009645630585871, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1772550880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &286169600
 GameObject:
   m_ObjectHideFlags: 0
@@ -7224,6 +7270,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8774,6 +8824,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8993,6 +9047,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9832,6 +9890,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8195611590457459526, guid: bfa1a665162ff764ca67d5d40d569e34, type: 3}
   m_PrefabInstance: {fileID: 477192813}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &482890953 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7116409556317961743, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1772550880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &483524287
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9884,6 +9947,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10483,6 +10550,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 834310968}
     m_Modifications:
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: enemyFlagDrop
+      value: 
+      objectReference: {fileID: 1964762051}
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: playerFlagDrop
+      value: 
+      objectReference: {fileID: 1357166593}
     - target: {fileID: 764967880790115042, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
       propertyPath: m_Name
       value: RemoveFlag Trap (3)
@@ -11562,6 +11637,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -11861,6 +11940,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 834310968}
     m_Modifications:
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: enemyFlagDrop
+      value: 
+      objectReference: {fileID: 1964762051}
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: playerFlagDrop
+      value: 
+      objectReference: {fileID: 1357166593}
     - target: {fileID: 764967880790115042, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
       propertyPath: m_Name
       value: RemoveFlag Trap (1)
@@ -12656,6 +12743,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12749,6 +12840,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1891553753}
     - target: {fileID: 5584449151668896400, guid: ba48f50869e901340a158a33029b35e2, type: 3}
+      propertyPath: engineRun
+      value: 
+      objectReference: {fileID: 1119920450}
+    - target: {fileID: 5584449151668896400, guid: ba48f50869e901340a158a33029b35e2, type: 3}
+      propertyPath: engineIdle
+      value: 
+      objectReference: {fileID: 746817539}
+    - target: {fileID: 5584449151668896400, guid: ba48f50869e901340a158a33029b35e2, type: 3}
+      propertyPath: engineSlow
+      value: 
+      objectReference: {fileID: 925151228}
+    - target: {fileID: 5584449151668896400, guid: ba48f50869e901340a158a33029b35e2, type: 3}
+      propertyPath: engineHaste
+      value: 
+      objectReference: {fileID: 482890953}
+    - target: {fileID: 5584449151668896400, guid: ba48f50869e901340a158a33029b35e2, type: 3}
       propertyPath: collisionWall
       value: 
       objectReference: {fileID: 1854955421}
@@ -12817,6 +12924,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12874,6 +12985,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12918,6 +13033,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 834310968}
     m_Modifications:
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: enemyFlagDrop
+      value: 
+      objectReference: {fileID: 1964762051}
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: playerFlagDrop
+      value: 
+      objectReference: {fileID: 1357166593}
     - target: {fileID: 764967880790115042, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
       propertyPath: m_Name
       value: RemoveFlag Trap (4)
@@ -13659,6 +13782,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13848,6 +13975,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13905,6 +14036,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14268,6 +14403,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 834310968}
     m_Modifications:
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: enemyFlagDrop
+      value: 
+      objectReference: {fileID: 1964762051}
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: playerFlagDrop
+      value: 
+      objectReference: {fileID: 1357166593}
     - target: {fileID: 764967880790115042, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
       propertyPath: m_Name
       value: RemoveFlag Trap
@@ -15692,6 +15835,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16110,6 +16257,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8195611590457459526, guid: dc0f6dad50344ac4e827283fc5116abb, type: 3}
   m_PrefabInstance: {fileID: 742406213}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &746817539 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2986908397343016762, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1772550880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &752365754
 GameObject:
   m_ObjectHideFlags: 0
@@ -16348,6 +16500,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8195611590457459526, guid: bfa1a665162ff764ca67d5d40d569e34, type: 3}
   m_PrefabInstance: {fileID: 754491156}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &755731604 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5004979529599598106, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1772550880}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &758445396
 PrefabInstance:
@@ -17364,6 +17521,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19042,6 +19203,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19446,6 +19611,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19804,6 +19973,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 834310968}
     m_Modifications:
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: enemyFlagDrop
+      value: 
+      objectReference: {fileID: 1964762051}
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: playerFlagDrop
+      value: 
+      objectReference: {fileID: 1357166593}
     - target: {fileID: 764967880790115042, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
       propertyPath: m_Name
       value: RemoveFlag Trap
@@ -20799,6 +20976,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8195611590457459526, guid: dc0f6dad50344ac4e827283fc5116abb, type: 3}
   m_PrefabInstance: {fileID: 924116189}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &925151228 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4546907588878230937, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1772550880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &927877048
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21367,6 +21549,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22944,6 +23130,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -24683,6 +24873,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8195611590457459526, guid: bfa1a665162ff764ca67d5d40d569e34, type: 3}
   m_PrefabInstance: {fileID: 1117975299}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1119920450 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8533723619087686964, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1772550880}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1124660096
 PrefabInstance:
@@ -28078,6 +28273,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -28695,6 +28894,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8195611590457459526, guid: dc0f6dad50344ac4e827283fc5116abb, type: 3}
   m_PrefabInstance: {fileID: 1283445384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1283791426 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2577065976727523335, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1772550880}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1284957701
 PrefabInstance:
@@ -30662,6 +30866,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 746219543203270158, guid: 5c9ef1bc4cbaa9f4084802e6b928b84c, type: 3}
   m_PrefabInstance: {fileID: 1356822652}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1357166593 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6780574826343220913, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1772550880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1357902598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 805728131985606431, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
@@ -31237,6 +31446,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31618,6 +31831,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33077,6 +33294,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33200,6 +33421,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33326,7 +33551,7 @@ Transform:
   m_GameObject: {fileID: 1490570328}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33395,6 +33620,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -33644,6 +33873,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6262959211993830262, guid: c6b90719cc1bfa5419e24118e9148da0, type: 3}
+      propertyPath: collision
+      value: 
+      objectReference: {fileID: 2064121883}
+    - target: {fileID: 6262959211993830262, guid: c6b90719cc1bfa5419e24118e9148da0, type: 3}
+      propertyPath: targetPing
+      value: 
+      objectReference: {fileID: 1283791426}
+    - target: {fileID: 6262959211993830262, guid: c6b90719cc1bfa5419e24118e9148da0, type: 3}
+      propertyPath: flagCapture
+      value: 
+      objectReference: {fileID: 285901380}
     - target: {fileID: 6262959211993830262, guid: c6b90719cc1bfa5419e24118e9148da0, type: 3}
       propertyPath: patrolPoints
       value: 
@@ -37505,6 +37746,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -37721,6 +37966,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7426396777646750000, guid: 84f1d118738e6ec4c9b2816c4ec885b0, type: 3}
+      propertyPath: collision
+      value: 
+      objectReference: {fileID: 2064121883}
+    - target: {fileID: 7426396777646750000, guid: 84f1d118738e6ec4c9b2816c4ec885b0, type: 3}
+      propertyPath: targetPing
+      value: 
+      objectReference: {fileID: 1283791426}
+    - target: {fileID: 7426396777646750000, guid: 84f1d118738e6ec4c9b2816c4ec885b0, type: 3}
+      propertyPath: flagCapture
+      value: 
+      objectReference: {fileID: 285901380}
     - target: {fileID: 7426396777646750000, guid: 84f1d118738e6ec4c9b2816c4ec885b0, type: 3}
       propertyPath: patrolPoints
       value: 
@@ -38582,6 +38839,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -38595,6 +38856,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 834310968}
     m_Modifications:
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: enemyFlagDrop
+      value: 
+      objectReference: {fileID: 1964762051}
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: playerFlagDrop
+      value: 
+      objectReference: {fileID: 1357166593}
     - target: {fileID: 764967880790115042, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
       propertyPath: m_Name
       value: RemoveFlag Trap (2)
@@ -39857,6 +40126,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2986908397343016762, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3511041411213902769, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
       propertyPath: m_Name
       value: Manager
@@ -39865,6 +40138,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1543601384}
+    - target: {fileID: 4546907588878230937, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6784017334552381670, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
       propertyPath: m_LocalPosition.x
       value: -119.52929
@@ -39903,6 +40180,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6784017334552381670, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7116409556317961743, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8533723619087686964, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+      propertyPath: Loop
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8818711839324579378, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
@@ -40669,6 +40954,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -41561,6 +41850,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -42039,6 +42332,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4381849189614827335, guid: 5c1b46daf48b29b488fdbb2327a83f5e, type: 3}
+      propertyPath: pushTrap
+      value: 
+      objectReference: {fileID: 755731604}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -44604,6 +44901,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 805728131985606431, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
   m_PrefabInstance: {fileID: 684728946}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &1964762051 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3479315340000749941, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1772550880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1966184141
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45106,6 +45408,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 834310968}
     m_Modifications:
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: enemyFlagDrop
+      value: 
+      objectReference: {fileID: 1964762051}
+    - target: {fileID: 340700392590091625, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
+      propertyPath: playerFlagDrop
+      value: 
+      objectReference: {fileID: 1357166593}
     - target: {fileID: 764967880790115042, guid: 342f9a6ce0dbe204e866ca40a5baf03c, type: 3}
       propertyPath: m_Name
       value: RemoveFlag Trap (5)
@@ -45774,7 +46084,7 @@ Transform:
   m_GameObject: {fileID: 2043898377}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46012,11 +46322,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6534435763096908461, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+      propertyPath: stopTrap
+      value: 
+      objectReference: {fileID: 83737603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a74b59f84ea702f4ea0d33f267c7f991, type: 3}
+--- !u!82 &2064121883 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4801732052176256246, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1772550880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2070210773
 GameObject:
   m_ObjectHideFlags: 0
