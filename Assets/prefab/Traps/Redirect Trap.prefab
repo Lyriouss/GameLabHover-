@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 805728131985606431}
   - component: {fileID: 8305182954086068348}
   - component: {fileID: 2564751245879610041}
-  - component: {fileID: 2281064340754434678}
   - component: {fileID: 3561536801880832655}
   - component: {fileID: 4381849189614827335}
   m_Layer: 0
@@ -29,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 764967880790115042}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_ConstrainProportionsScale: 1
@@ -94,28 +93,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2281064340754434678
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764967880790115042}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!65 &3561536801880832655
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -135,8 +112,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10, y: 2.5, z: 10}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 10, y: 5.12, z: 10}
+  m_Center: {x: 0, y: 3.53, z: 0}
 --- !u!114 &4381849189614827335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc98fc7ad61d374ea4ca3ec95cc567f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RedirectTrap
-  pushForce: 10
+  pushForce: 30
 --- !u!1 &3139822652300287119
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,8 +153,8 @@ Transform:
   m_GameObject: {fileID: 3139822652300287119}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 150, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 1.6666666}
+  m_LocalPosition: {x: 0, y: 398, z: 0}
+  m_LocalScale: {x: 13.2945, y: 13.2945, z: 0.7385833}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 805728131985606431}

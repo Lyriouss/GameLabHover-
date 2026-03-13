@@ -6,6 +6,7 @@ public class FlagSpawner : MonoBehaviour
     [SerializeField] private GameObject flag;
     [SerializeField] private LayerMask flagMask;
     private List<Transform> flagSpawnPositions;
+    private int forCount;
 
     private void Awake()
     {
@@ -19,18 +20,25 @@ public class FlagSpawner : MonoBehaviour
 
     private void Start()
     {
-        SpawnFlag();
+        for (forCount = 0; forCount < 3; forCount++)
+        {
+            SpawnFlag();
+        }
     }
 
     private void SpawnFlag()
     {
         int randomSpawn = Random.Range(0, flagSpawnPositions.Count);
 
-        //Collider[] spawnCheck = Physics.OverlapSphere(flagSpawnPositions[randomSpawn].position, 0.1f, flagMask);
+        Collider[] spawnCheck = Physics.OverlapSphere(flagSpawnPositions[randomSpawn].position, 0.1f, flagMask);
 
-        //if (spawnCheck.Length == 0)
+        if (spawnCheck.Length <= 0)
+        {
             Instantiate(flag, flagSpawnPositions[randomSpawn].position, Quaternion.identity);
-        //else
-            //SpawnFlag();
+        }
+        else
+        {
+            forCount--;
+        }
     }
 }

@@ -29,9 +29,13 @@ public class PowerUpsSpawner : MonoBehaviour
                 Collider[] powerupCheck = Physics.OverlapSphere(powerupSpawnPositions[randomSpawn].position, 0.1f, powerupMask);
 
                 if (powerupCheck.Length == 0)
+                {
                     Instantiate(powerupSpawn[i], powerupSpawnPositions[randomSpawn].position, Quaternion.identity);
+                }
                 else
+                {
                     c--;
+                }
             }
         }
     }

@@ -29,11 +29,14 @@ public class RedirectTrap : MonoBehaviour
     }
 
     //quando entriamo nel trigger
-    public void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         //ci gettiamo il rigidbody della navicella che ha beccato la trappola
         Rigidbody hoversRB = other.GetComponent<Rigidbody>();
         redirectedHovercraft = hoversRB;
+
+        redirectedHovercraft.angularVelocity = Vector3.zero;
+        redirectedHovercraft.linearVelocity = Vector3.zero;
 
         //centriamo il player mantenendo la sua altezza
         Vector3 trapCenter = new Vector3(transform.position.x, redirectedHovercraft.position.y, transform.position.z);

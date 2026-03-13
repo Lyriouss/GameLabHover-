@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 enum PowerUps
@@ -41,6 +40,7 @@ public class PowerUpsManager : MonoBehaviour
     private float hasteTimer = 0f;
     public float hasteTimerDuration = 10f;
     private bool isFast = false;
+    private float originalAcceleration;
     private float originalSpeed;
 
     //Slowed Down Power Up stats
@@ -90,6 +90,7 @@ public class PowerUpsManager : MonoBehaviour
     public void Start()
     {
         //settiamo la velocità originale del player pre-power ups
+        originalAcceleration = PlayerMovement.Instance.accelerationForce;
         originalSpeed = PlayerMovement.Instance.maxSpeed;
     }
     public void FixedUpdate()
@@ -161,6 +162,7 @@ public class PowerUpsManager : MonoBehaviour
                 hasteEnd.Play();
 
                 //quando arriva allo scadere del timer, torna alla velocità originale e si resetta tutto
+                PlayerMovement.Instance.accelerationForce = originalAcceleration;
                 PlayerMovement.Instance.maxSpeed = originalSpeed;
 
                 hasteTimer = 0f;
@@ -181,7 +183,7 @@ public class PowerUpsManager : MonoBehaviour
                 slowEnd.Play();
 
                 //quando arriva allo scadere del timer, torna alla velocità originale e si resetta tutto
-
+                PlayerMovement.Instance.accelerationForce = originalAcceleration;
                 PlayerMovement.Instance.maxSpeed = originalSpeed;
 
                 slowTimer = 0f;
@@ -275,7 +277,8 @@ public class PowerUpsManager : MonoBehaviour
 
         //duplico la velocità originale per farlo andare veloce
         hasteTimer = 0f;
-        PlayerMovement.Instance.maxSpeed = originalSpeed * 2;
+        PlayerMovement.Instance.accelerationForce = originalAcceleration + 5f;
+        PlayerMovement.Instance.maxSpeed = originalSpeed + 10f;
         isFast = true;
     }
 
@@ -293,7 +296,8 @@ public class PowerUpsManager : MonoBehaviour
 
             //dimezzo la velocità originale per farlo andare veloce
             slowTimer = 0f;
-            PlayerMovement.Instance.maxSpeed = originalSpeed / 2;
+            PlayerMovement.Instance.accelerationForce = originalAcceleration - 5f;
+            PlayerMovement.Instance.maxSpeed = originalSpeed - 10f;
             isSlow = true;
         }
     }

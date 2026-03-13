@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3621514693413050068}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 50, z: 0}
+  m_LocalPosition: {x: 0, y: 529, z: -0}
   m_LocalScale: {x: 30, y: 30, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -147,9 +147,10 @@ MonoBehaviour:
   collision: {fileID: 0}
   flagCapture: {fileID: 0}
   decelerationTime: 1
-  patrolSpeed: 8
-  targetSpeed: 10
+  patrolSpeed: 15
+  targetSpeed: 20
   rotationSpeed: 50
+  patrolPoints: {fileID: 0}
   patrolPositions: []
   obstacleMask:
     serializedVersion: 2
@@ -157,12 +158,12 @@ MonoBehaviour:
   targetMask:
     serializedVersion: 2
     m_Bits: 1024
-  detectionRadius: 50
+  detectionRadius: 75
   timeBeforeChange: 3
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
-  groundDistance: 2
+    m_Bits: 192
+  groundDistance: 3
   timeStayStill: 3
   target: {fileID: 0}
   lastFacing: {x: 0, y: 0, z: 0}
@@ -194,7 +195,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 3
   m_Speed: 10
-  m_Acceleration: 5
+  m_Acceleration: 10
   avoidancePriority: 50
   m_AngularSpeed: 20
   m_StoppingDistance: 2

@@ -21,6 +21,7 @@ public class EnemyManager : MonoBehaviour, IEnemyStateMachine
     public float patrolSpeed = 8f;
     public float targetSpeed = 10f;
     public float rotationSpeed = 50f;
+    public GameObject patrolPoints;
     public List<Transform> patrolPositions;
 
     [Header("Target Detection")]
@@ -46,6 +47,13 @@ public class EnemyManager : MonoBehaviour, IEnemyStateMachine
     public float stayStillTimer;
 
     private EnemyStateMachine esm;
+
+    private void Awake()
+    {
+        foreach (Transform child in patrolPoints.transform)
+        {
+            patrolPositions.Add(child);        }
+    }
 
     private void Start()
     {
@@ -78,8 +86,6 @@ public class EnemyManager : MonoBehaviour, IEnemyStateMachine
         if (other.collider.CompareTag("Player") || other.collider.CompareTag("Enemy"))
         {
             collision.Play();
-            enemyRB.angularVelocity = Vector3.zero;
-            enemyRB.linearVelocity = Vector3.zero;
             esm.ChangeState(new PatrolState(this));
         }
     }
