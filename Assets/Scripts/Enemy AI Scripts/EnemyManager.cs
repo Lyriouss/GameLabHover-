@@ -52,7 +52,8 @@ public class EnemyManager : MonoBehaviour, IEnemyStateMachine
     {
         foreach (Transform child in patrolPoints.transform)
         {
-            patrolPositions.Add(child);        }
+            patrolPositions.Add(child);        
+        }
     }
 
     private void Start()
@@ -83,10 +84,19 @@ public class EnemyManager : MonoBehaviour, IEnemyStateMachine
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.collider.CompareTag("Player") || other.collider.CompareTag("Enemy"))
+        if (other.collider.CompareTag("Player"))
         {
             collision.Play();
+            //enemyRB.angularVelocity = Vector3.zero;
+            enemyRB.linearVelocity = Vector3.zero;
+            enemyRB.AddForce(-transform.forward * PlayerMovement.Instance.bounceBackForce, ForceMode.Impulse);
             esm.ChangeState(new PatrolState(this));
+        }
+        else if (other.collider.CompareTag("Enemy") || other.collider.CompareTag("Wall"))
+        {
+            //enemyRB.angularVelocity = Vector3.zero;
+            enemyRB.linearVelocity = Vector3.zero;
+            enemyRB.AddForce(-transform.forward * PlayerMovement.Instance.bounceBackForce, ForceMode.Impulse);
         }
     }
 

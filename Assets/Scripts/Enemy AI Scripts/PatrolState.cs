@@ -93,10 +93,10 @@ public class PatrolState : IEnemyState, IEnemyMovement
         //after it stops moving, start rotating the enemy
         else if (em.isRotating && !em.needsToStop)
         {
-            em.navMeshA.speed = 0.01f;
+            em.navMeshA.speed = 0.05f;
 
             //only when the difference between current rotation angle and last rotation angle is less than 0.5
-            if (angleCheck <= 0.5f)
+            if (angleCheck <= 0.25f)
                 em.isRotating = false;
         }
         //after rotation is complete, move the enemy
@@ -161,6 +161,16 @@ public class PatrolState : IEnemyState, IEnemyMovement
 
         if (CheckDistance < 3f)
         {
+            em.patrolPositions.RemoveAt(em.randomDes);
+
+            if (em.patrolPositions.Count <= 1)
+            {
+                foreach (Transform child in em.patrolPoints.transform)
+                {
+                    em.patrolPositions.Add(child);
+                }
+            }
+
             em.randomDes = Random.Range(0, em.patrolPositions.Count);
         }
     }

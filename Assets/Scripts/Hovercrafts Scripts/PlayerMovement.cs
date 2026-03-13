@@ -217,10 +217,12 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Walls"))
+        if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Enemy"))
         {
             collisionWall.Play();
-            playerRB.AddForce(-transform.forward *bounceBackForce, ForceMode.Impulse);
+            //playerRB.angularVelocity = Vector3.zero;
+            playerRB.linearVelocity = Vector3.zero;
+            playerRB.AddForce(-transform.forward * bounceBackForce, ForceMode.Impulse);
         }
     }
 

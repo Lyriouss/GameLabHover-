@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 167c65fe64c3c0a47b2bc5cd3d320e0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BlueFlag
-  scorePoint: 500
+  scorePoint: 2500
 --- !u!1 &2774508612763129981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1402,7 +1402,7 @@ Transform:
   m_GameObject: {fileID: 2883267737264590934}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 400, z: 0}
+  m_LocalPosition: {x: 0, y: 140, z: -0}
   m_LocalScale: {x: 30, y: 30, z: 0.6666667}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1660,7 +1660,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 929bb1388821e424992df5237db2465d, type: 2}
+  - {fileID: 2100000, guid: 7f96643ce77bf8641860732891ac6d81, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
