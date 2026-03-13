@@ -21,6 +21,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] public Image powerUpA_fillBar, powerUpS_fillBar, powerUpD_fillBar, shield_fillBar, haste_fillBar, slow_fillBar;
     [SerializeField] public GameObject powerUpD_Screen;
 
+    //EMI!!!!!!!!!!! gettati il PlayerMovement per le stat.
+    //secondo me i valori che ti serviranno saranno la sua "accelerationForce" per dire quanto si riempie
+    // e il suo "maxSpeed" per settare il massimo della fillbar
+    //ADDIOOOO
+    [SerializeField] public GameObject velocity_fillbar;
+
     [Header("Score management")]
     [SerializeField] public TMP_Text score;
     [SerializeField] public Image flagScoreBlu;
