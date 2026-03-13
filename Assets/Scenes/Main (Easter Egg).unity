@@ -4198,6 +4198,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 483783919}
     - target: {fileID: 4741942708975499148, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 1099690984}
+    - target: {fileID: 4741942708975499148, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+      propertyPath: levelWin
+      value: 
+      objectReference: {fileID: 1099690983}
+    - target: {fileID: 4741942708975499148, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+      propertyPath: levelLose
+      value: 
+      objectReference: {fileID: 1099690982}
+    - target: {fileID: 4741942708975499148, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
       propertyPath: redFlagStolen
       value: 
       objectReference: {fileID: 494057009}
@@ -4342,6 +4354,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+--- !u!82 &1099690982 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3283589923277653158, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1099690981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1099690983 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1962966327067944591, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1099690981}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1099690984 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7470211477325652235, guid: 038d6fed6978fd445bd904bb3845a53b, type: 3}
+  m_PrefabInstance: {fileID: 1099690981}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1103246956 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7687894995297557485, guid: 88d0ed6d6816cf04ca027b6c2519a3d5, type: 3}
